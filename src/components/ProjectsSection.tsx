@@ -289,8 +289,8 @@ export default function ProjectsSection() {
         </div>
 
         {/* Grid */}
-        <ScaleToFit designWidth={860} compactWidth={440}>
-        <div className="grid grid-cols-2 gap-5 compact:gap-2.5">
+        <ScaleToFit designWidth={860} compactWidth={440} fluid>
+        <div className="grid grid-cols-2 gap-5 compact:gap-2.5 lg:grid-cols-3">
           <AnimatePresence mode="popLayout">
             {filtered.map((project, i) => (
               <ProjectCard key={project.id} project={project} index={i} />

@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter, Bricolage_Grotesque } from "next/font/google";
 import Script from "next/script";
 import MotionProvider from "@/components/MotionProvider";
+import { SITE_URL, personJsonLd, websiteJsonLd } from "@/data/site";
 import "./globals.css";
 
 const inter = Inter({
@@ -18,7 +19,11 @@ const bricolage = Bricolage_Grotesque({
 });
 
 export const metadata: Metadata = {
-  title: "Arooba Alam Khan | Full-Stack Software Engineer & Solutions Architect",
+  title: {
+    default: "Arooba Alam Khan | Full-Stack Software Engineer & Solutions Architect",
+    template: "%s | Arooba Alam Khan",
+  },
+  alternates: { canonical: "/" },
   description:
     "Engineering modern responsive web platforms, AI chatbots, SaaS dashboards, and automated custom software solutions with Next.js, React, Node.js, and Python.",
   keywords: [
@@ -36,11 +41,11 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Arooba Alam Khan" }],
   creator: "Arooba Alam Khan",
-  metadataBase: new URL("https://aroobaalamkhan.com"),
+  metadataBase: new URL(SITE_URL),
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://aroobaalamkhan.com",
+    url: SITE_URL,
     title: "Arooba Alam Khan | Full-Stack Software Engineer",
     description:
       "Engineering modern responsive web platforms, AI chatbots, SaaS dashboards, and automated software solutions.",
@@ -75,6 +80,12 @@ export default function RootLayout({
         <Script id="theme-init" strategy="beforeInteractive">
           {"try{if(localStorage.getItem('portfolio-theme')==='dark'){document.documentElement.dataset.theme='dark'}}catch(e){}"}
         </Script>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify([personJsonLd, websiteJsonLd]).replace(/</g, "\\u003c"),
+          }}
+        />
         <MotionProvider>{children}</MotionProvider>
       </body>
     </html>

@@ -16,12 +16,15 @@ export default function ScaleToFit({
   designWidth,
   compactWidth,
   compactBelow = 600,
+  fluid = false,
   children,
   className = "",
 }: {
   designWidth: number;
   compactWidth?: number;
   compactBelow?: number;
+  /** Above `compactBelow`, skip scaling and let the content use the real width (normal responsive layout). */
+  fluid?: boolean;
   children: React.ReactNode;
   className?: string;
 }) {
@@ -44,6 +47,10 @@ export default function ScaleToFit({
     const measure = () => {
       const w = outer.clientWidth;
       const compact = compactWidth !== undefined && w < compactBelow;
+      if (fluid && !compact) {
+        setS({ scale: 1, left: 0, height: inner.offsetHeight, width: w, compact: false, ready: true });
+        return;
+      }
       const dw = compact ? (compactWidth as number) : designWidth;
       // Compact designs may scale up a little so they fill phone-sized screens.
       const scale = Math.min(compact ? 1.3 : 1, w / dw);
@@ -63,7 +70,7 @@ export default function ScaleToFit({
     ro.observe(outer);
     ro.observe(inner);
     return () => ro.disconnect();
-  }, [designWidth, compactWidth, compactBelow]);
+  }, [designWidth, compactWidth, compactBelow, fluid]);
 
   return (
     <div

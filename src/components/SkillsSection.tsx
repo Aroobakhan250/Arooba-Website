@@ -200,8 +200,8 @@ export default function SkillsSection() {
         </div>
 
         {/* Grid */}
-        <ScaleToFit designWidth={780} compactWidth={440}>
-        <div className="grid grid-cols-3 gap-4 compact:gap-2.5">
+        <ScaleToFit designWidth={780} compactWidth={440} fluid>
+        <div className="grid grid-cols-2 gap-4 compact:gap-2.5 sm:grid-cols-3 md:grid-cols-5">
           <AnimatePresence mode="popLayout">
             {shown.map((skill, i) => (
               <SkillCard key={skill.name} skill={skill} index={i} />

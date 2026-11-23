@@ -15,6 +15,17 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  // Project screenshots, videos and service images rarely change: let browsers
+  // and CDNs keep them for a week so repeat visits do not re-download them.
+  async headers() {
+    // Production only, so replacing an image while developing shows up instantly.
+    if (process.env.NODE_ENV !== "production") return [];
+    const cache = [{ key: "Cache-Control", value: "public, max-age=604800, stale-while-revalidate=86400" }];
+    return [
+      { source: "/projects/:path*", headers: cache },
+      { source: "/images/:path*", headers: cache },
+    ];
+  },
   turbopack: {
     rules: {
       "*.css": {
