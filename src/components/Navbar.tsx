@@ -30,7 +30,7 @@ export default function Navbar() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-4 sm:px-8 pt-5">
       <div
-        className={`max-w-7xl mx-auto rounded-full transition-all duration-300 flex items-center justify-between px-6 sm:px-8 py-3.5 ${
+        className={`max-w-7xl mx-auto rounded-full transition-all duration-300 flex items-center justify-between gap-2 px-4 sm:px-8 py-3 sm:py-3.5 ${
           scrolled
             ? "bg-white/90 backdrop-blur-xl border border-[#4A90A4]/20 shadow-2xl shadow-[#4A90A4]/10"
             : "bg-white/70 backdrop-blur-md border border-[#4A90A4]/15"
@@ -40,9 +40,9 @@ export default function Navbar() {
         <a
           href="#"
           id="nav-logo"
-          className="flex items-center gap-3 group"
+          className="flex min-w-0 items-center gap-3 group"
         >
-          <div className="w-9 h-9 rounded-full bg-[#4A90A4] flex items-center justify-center text-white shadow-md shadow-[#4A90A4]/30 group-hover:scale-105 transition-transform shrink-0">
+          <div className="hidden sm:flex w-9 h-9 rounded-full bg-[#4A90A4] items-center justify-center text-white shadow-md shadow-[#4A90A4]/30 group-hover:scale-105 transition-transform shrink-0">
             <svg
               className="w-4 h-4 fill-white text-white"
               viewBox="0 0 24 24"
@@ -52,10 +52,10 @@ export default function Navbar() {
             </svg>
           </div>
           <div className="flex flex-col leading-tight">
-            <span className="font-extrabold text-[#2C4A5A] text-sm sm:text-base tracking-tight">
+            <span className="font-extrabold text-[#2C4A5A] text-[13px] sm:text-base tracking-tight whitespace-nowrap">
               Arooba Alam <span className="text-[#4A90A4]">Khan</span>
             </span>
-            <span className="text-[10px] sm:text-[11px] text-[#4A90A4]/70 font-semibold tracking-widest uppercase">
+            <span className="hidden sm:block text-[10px] sm:text-[11px] text-[#4A90A4]/70 font-semibold tracking-widest uppercase whitespace-nowrap">
               Full Stack Web Developer
             </span>
           </div>
@@ -79,7 +79,7 @@ export default function Navbar() {
         </nav>
 
         {/* Right Action Buttons */}
-        <div className="flex items-center gap-3">
+        <div className="flex shrink-0 items-center gap-2 sm:gap-3">
           {/* Light/Dark Toggle Icon */}
           <ThemeToggle />
 
@@ -87,13 +87,13 @@ export default function Navbar() {
           <a
             href="#contact"
             id="hire-me-nav-btn"
-            className="inline-flex items-center gap-2 bg-[#4A90A4] text-white hover:bg-[#357A8A] text-xs sm:text-sm font-bold px-5 py-2.5 rounded-full shadow-lg shadow-[#4A90A4]/25 transition-all duration-200"
+            className="inline-flex items-center gap-2 whitespace-nowrap bg-[#4A90A4] text-white hover:bg-[#357A8A] text-xs sm:text-sm font-bold px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-full shadow-lg shadow-[#4A90A4]/25 transition-all duration-200"
           >
             <span>Let&apos;s Talk</span>
           </a>
 
           {/* Mobile Menu Button */}
-          <div className="flex lg:hidden items-center ml-1">
+          <div className="flex lg:hidden items-center">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               id="mobile-menu-btn"

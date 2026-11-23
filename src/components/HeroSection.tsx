@@ -20,6 +20,7 @@ import {
 } from "lucide-react";
 import { LinkedinIcon } from "@/components/BrandIcons";
 import { PERSONAL_INFO } from "@/data/portfolioData";
+import ScaleToFit from "@/components/ScaleToFit";
 
 /* ─────────────────────────────────────────────────────────────
    SHARED TEXT STYLES (light theme)
@@ -182,7 +183,7 @@ const RIGHT_SLIDES = [
         <a
           href="#contact"
           aria-label="Start a project"
-          className="group relative hidden h-20 w-20 items-center justify-center rounded-full border border-dashed border-[#4A90A4]/60 sm:flex"
+          className="group relative flex h-20 w-20 items-center justify-center rounded-full border border-dashed border-[#4A90A4]/60"
         >
           <svg className="animate-spin-slow absolute inset-0 h-full w-full" viewBox="0 0 100 100" aria-hidden>
             <path id="circlePathR" d="M 50,50 m -37,0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="none" />
@@ -362,7 +363,7 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative overflow-hidden pb-20 pt-24 sm:pt-24 lg:pt-28"
+      className="relative overflow-hidden pb-10 pt-24 sm:pb-16 sm:pt-24 lg:pb-20 lg:pt-28"
     >
       {/* Soft background accents */}
       <div className="pointer-events-none absolute left-1/2 top-1/2 -z-10 h-[820px] w-[820px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(74,144,164,0.14),transparent)]" />
@@ -444,13 +445,14 @@ export default function HeroSection() {
         </motion.div>
 
         {/* ══════════ 3-COLUMN GRID ══════════ */}
-        <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-12">
+        <ScaleToFit designWidth={1100}>
+        <div className="grid grid-cols-12 items-center gap-8">
           {/* LEFT CARD */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, delay: 0.15 }}
-            className="z-20 order-2 lg:order-1 lg:col-span-4"
+            className="z-20 col-span-4"
             style={glassStyle}
             onMouseEnter={() => setPausedLeft(true)}
             onMouseLeave={() => setPausedLeft(false)}
@@ -480,9 +482,9 @@ export default function HeroSection() {
             initial={{ opacity: 0, scale: 0.94 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="relative order-1 flex flex-col items-center justify-center lg:order-2 lg:col-span-4"
+            className="relative col-span-4 flex flex-col items-center justify-center"
           >
-            <div className="relative aspect-[4/5] w-full max-w-[300px] rounded-[30px] border border-[#4A90A4]/30 bg-gradient-to-b from-[#4A90A4]/45 via-white/30 to-[#7BB8C8]/55 p-[3px] shadow-[0_34px_70px_-18px_rgba(53,122,138,0.45)] sm:max-w-[360px]">
+            <div className="relative aspect-[4/5] w-full max-w-[360px] rounded-[30px] border border-[#4A90A4]/30 bg-gradient-to-b from-[#4A90A4]/45 via-white/30 to-[#7BB8C8]/55 p-[3px] shadow-[0_34px_70px_-18px_rgba(53,122,138,0.45)]">
               <div className="relative h-full w-full overflow-hidden rounded-[27px] border border-[#4A90A4]/15 bg-[#E0F0F8]">
                 <Image
                   src="/arooba-hero.png"
@@ -522,7 +524,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, delay: 0.15 }}
-            className="z-20 order-3 lg:col-span-4"
+            className="z-20 col-span-4"
             style={glassStyle}
             onMouseEnter={() => setPausedRight(true)}
             onMouseLeave={() => setPausedRight(false)}
@@ -547,6 +549,7 @@ export default function HeroSection() {
             </div>
           </motion.div>
         </div>
+        </ScaleToFit>
       </div>
     </section>
   );

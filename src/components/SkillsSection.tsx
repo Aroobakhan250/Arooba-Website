@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { SKILLS_DATA, type SkillItem } from "@/data/portfolioData";
 import { Code2, Database, Globe, Server, Layers } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import ScaleToFit from "@/components/ScaleToFit";
 
 type Cat = SkillItem["category"];
 type Filter = "All" | Cat;
@@ -68,7 +69,6 @@ function SkillCard({ skill, index }: { skill: SkillItem; index: number }) {
 
   return (
     <motion.div
-      layout
       initial={{ opacity: 0, y: 26, scale: 0.94 }}
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
       viewport={{ once: true, margin: "-30px" }}
@@ -200,16 +200,15 @@ export default function SkillsSection() {
         </div>
 
         {/* Grid */}
-        <motion.div
-          layout
-          className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5"
-        >
+        <ScaleToFit designWidth={780}>
+        <div className="grid grid-cols-3 gap-4">
           <AnimatePresence mode="popLayout">
             {shown.map((skill, i) => (
               <SkillCard key={skill.name} skill={skill} index={i} />
             ))}
           </AnimatePresence>
-        </motion.div>
+        </div>
+        </ScaleToFit>
       </div>
     </section>
   );

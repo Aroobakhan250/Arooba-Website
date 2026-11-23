@@ -6,6 +6,7 @@ import Link from "next/link";
 import { ArrowUpRight, ArrowRight, MousePointer2 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { PROJECTS_DATA, type ProjectItem } from "@/data/portfolioData";
+import ScaleToFit from "@/components/ScaleToFit";
 
 type CategoryFilter =
   | "All"
@@ -48,7 +49,6 @@ function ProjectCard({ project, index }: { project: ProjectItem; index: number }
       }, 1400);
     } else {
       if (intervalRef.current) clearInterval(intervalRef.current);
-      setCurrentIdx(0);
     }
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current);
@@ -59,7 +59,6 @@ function ProjectCard({ project, index }: { project: ProjectItem; index: number }
 
   return (
     <motion.article
-      layout
       initial={{ opacity: 0, y: 36, scale: 0.95 }}
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
       viewport={{ once: true, margin: "-40px" }}
@@ -282,13 +281,15 @@ export default function ProjectsSection() {
         </div>
 
         {/* Grid */}
-        <motion.div layout className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <ScaleToFit designWidth={860}>
+        <div className="grid grid-cols-2 gap-5">
           <AnimatePresence mode="popLayout">
             {filtered.map((project, i) => (
               <ProjectCard key={project.id} project={project} index={i} />
             ))}
           </AnimatePresence>
-        </motion.div>
+        </div>
+        </ScaleToFit>
 
         {/* Gallery CTA */}
         <div className="mt-10 text-center">

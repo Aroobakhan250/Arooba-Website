@@ -12,6 +12,7 @@ import {
   RefreshCcw,
 } from "lucide-react";
 import { motion } from "framer-motion";
+import ScaleToFit from "@/components/ScaleToFit";
 
 const STEP_STYLES = [
   {
@@ -92,8 +93,9 @@ export default function WorkflowSection() {
           </p>
         </motion.div>
 
-        {/* Timeline rail (desktop) */}
-        <div className="relative mb-6 hidden lg:block" aria-hidden>
+        <ScaleToFit designWidth={1100}>
+        {/* Timeline rail */}
+        <div className="relative mb-6" aria-hidden>
           <div className="absolute left-[10%] right-[10%] top-1/2 h-[3px] -translate-y-1/2 rounded-full bg-[#B8D8E8]/70" />
           <motion.div
             className="absolute left-[10%] right-[10%] top-1/2 h-[3px] origin-left -translate-y-1/2 rounded-full bg-gradient-to-r from-[#4A90A4] via-[#8B6FE0] to-[#3FBF9F]"
@@ -120,7 +122,7 @@ export default function WorkflowSection() {
         </div>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-5">
+        <div className="grid grid-cols-5 gap-5">
           {WORKFLOW_STEPS.map((step: StepItem, index: number) => {
             const s = STEP_STYLES[index % STEP_STYLES.length];
             const Icon = s.icon;
@@ -174,6 +176,7 @@ export default function WorkflowSection() {
             );
           })}
         </div>
+        </ScaleToFit>
       </div>
     </section>
   );
