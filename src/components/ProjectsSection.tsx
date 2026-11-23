@@ -85,6 +85,11 @@ function ProjectCard({ project, index }: { project: ProjectItem; index: number }
         }`}
       >
         {imageList.map((src, idx) => {
+          // Only load what is needed: the thumbnail always, and (while hovering) the
+          // current + next item. Everything else stays unloaded until it is its turn.
+          const nextIdx = (currentIdx + 1) % imageList.length;
+          const shouldRender = idx === 0 || (isHovered && (idx === currentIdx || idx === nextIdx));
+          if (!shouldRender) return null;
           const isVideo = src.endsWith(".mp4") || src.endsWith(".webm");
           const isThumb = hasThumb && idx === 0;
           return (
@@ -114,7 +119,7 @@ function ProjectCard({ project, index }: { project: ProjectItem; index: number }
                       ? "object-cover object-center transition-transform duration-700 group-hover:scale-[1.03]"
                       : "rounded-lg object-contain object-center"
                   }
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  sizes="430px"
                 />
               )}
             </div>

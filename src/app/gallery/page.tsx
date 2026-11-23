@@ -273,6 +273,12 @@ export default function GalleryPage() {
                   exit={{ opacity: 0, scale: 0.94 }}
                   transition={{ duration: 0.4, delay: (idx % 8) * 0.04, ease: [0.22, 1, 0.36, 1] }}
                   onClick={() => setLightboxIndex(idx)}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.querySelector("video")?.play().catch(() => {});
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.querySelector("video")?.pause();
+                  }}
                   aria-label={`Open ${shortName(item.projectTitle)} item ${item.index}`}
                   className="group glow-card cursor-pointer text-left [--glow-r:20px]"
                   style={{ "--g1": tone.g1, "--g2": tone.g2 } as React.CSSProperties}
@@ -285,8 +291,8 @@ export default function GalleryPage() {
                       {item.isVideo ? (
                         <>
                           <video
-                            src={item.mediaUrl}
-                            autoPlay
+                            src={`${item.mediaUrl}#t=0.1`}
+                            preload="metadata"
                             loop
                             muted
                             playsInline
