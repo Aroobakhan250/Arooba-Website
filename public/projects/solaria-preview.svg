@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="aiBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E1B4B"/>
+    </linearGradient>
+    <linearGradient id="aiAccent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6366F1"/>
+      <stop offset="100%" stop-color="#818CF8"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#aiBg)"/>
+  <rect x="40" y="40" width="720" height="420" rx="16" fill="#1E293B" stroke="#334155" stroke-width="2"/>
+  
+  <!-- Window top bar -->
+  <path d="M40 40 h720 v45 h-720 z" fill="#0F172A" rx="16"/>
+  <circle cx="65" cy="62" r="6" fill="#EF4444"/>
+  <circle cx="85" cy="62" r="6" fill="#F59E0B"/>
+  <circle cx="105" cy="62" r="6" fill="#10B981"/>
+  <rect x="250" y="52" width="300" height="20" rx="6" fill="#1E293B"/>
+  <text x="400" y="66" fill="#94A3B8" font-family="Inter, sans-serif" font-size="11" text-anchor="middle">solaria.ai/workspace</text>
+  
+  <!-- Left models menu -->
+  <rect x="40" y="85" width="200" height="375" fill="#111827"/>
+  <text x="65" y="115" fill="#F8FAFC" font-family="Inter, sans-serif" font-size="13" font-weight="700">✦ Solaria Suite</text>
+  <rect x="55" y="135" width="170" height="36" rx="8" fill="url(#aiAccent)"/>
+  <text x="95" y="157" fill="#FFFFFF" font-family="Inter, sans-serif" font-size="12" font-weight="600">LLM Generation</text>
+  <rect x="55" y="180" width="170" height="32" rx="6" fill="#1E293B"/>
+  <text x="95" y="200" fill="#94A3B8" font-family="Inter, sans-serif" font-size="12">Vision &amp; Image AI</text>
+  <rect x="55" y="220" width="170" height="32" rx="6" fill="#1E293B"/>
+  <text x="95" y="240" fill="#94A3B8" font-family="Inter, sans-serif" font-size="12">Audio Transcription</text>
+  <rect x="55" y="260" width="170" height="32" rx="6" fill="#1E293B"/>
+  <text x="95" y="280" fill="#94A3B8" font-family="Inter, sans-serif" font-size="12">Fine-Tuning Admin</text>
+  
+  <!-- Main Prompt & Response area -->
+  <rect x="260" y="105" width="480" height="180" rx="12" fill="#0F172A" stroke="#334155"/>
+  <rect x="280" y="125" width="140" height="22" rx="6" fill="#1E293B"/>
+  <text x="290" y="140" fill="#6366F1" font-family="Inter, sans-serif" font-size="11" font-weight="700">GPT-4o &amp; Claude-3.5</text>
+  
+  <!-- Chat bubbles -->
+  <rect x="280" y="160" width="300" height="36" rx="8" fill="#1E293B"/>
+  <text x="295" y="182" fill="#F8FAFC" font-family="Inter, sans-serif" font-size="11">Generate SQL schema for multi-tenant SaaS</text>
+  
+  <rect x="340" y="205" width="380" height="65" rx="8" fill="#1E1B4B" stroke="#6366F1" stroke-width="1"/>
+  <text x="355" y="228" fill="#818CF8" font-family="Inter, sans-serif" font-size="11">AI Agent initialized...</text>
+  <text x="355" y="248" fill="#F8FAFC" font-family="Inter, sans-serif" font-size="11">CREATE TABLE organizations ( id UUID PRIMARY KEY... );</text>
+  
+  <!-- Admin Metrics bar -->
+  <rect x="260" y="305" width="230" height="135" rx="10" fill="#0F172A" stroke="#334155"/>
+  <text x="280" y="335" fill="#94A3B8" font-family="Inter, sans-serif" font-size="11">API Tokens Processed</text>
+  <text x="280" y="365" fill="#F8FAFC" font-family="Inter, sans-serif" font-size="20" font-weight="800">4,281,902</text>
+  <text x="280" y="390" fill="#10B981" font-family="Inter, sans-serif" font-size="11">↑ 24.8% this week</text>
+  
+  <rect x="510" y="305" width="230" height="135" rx="10" fill="#0F172A" stroke="#334155"/>
+  <text x="530" y="335" fill="#94A3B8" font-family="Inter, sans-serif" font-size="11">Active User Sessions</text>
+  <text x="530" y="365" fill="#6366F1" font-family="Inter, sans-serif" font-size="20" font-weight="800">1,492 Concurrent</text>
+  <text x="530" y="390" fill="#94A3B8" font-family="Inter, sans-serif" font-size="11">Average Latency: 180ms</text>
+</svg>

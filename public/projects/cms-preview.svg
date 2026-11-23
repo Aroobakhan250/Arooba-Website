@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="cmsBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E293B"/>
+    </linearGradient>
+    <linearGradient id="accentG" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6366F1"/>
+      <stop offset="100%" stop-color="#4F46E5"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#cmsBg)"/>
+  <rect x="40" y="40" width="720" height="420" rx="16" fill="#1E293B" stroke="#334155" stroke-width="2"/>
+  
+  <!-- Window top bar -->
+  <path d="M40 40 h720 v45 h-720 z" fill="#0F172A" rx="16"/>
+  <circle cx="65" cy="62" r="6" fill="#EF4444"/>
+  <circle cx="85" cy="62" r="6" fill="#F59E0B"/>
+  <circle cx="105" cy="62" r="6" fill="#10B981"/>
+  <rect x="250" y="52" width="300" height="20" rx="6" fill="#1E293B"/>
+  <text x="400" y="66" fill="#94A3B8" font-family="Inter, sans-serif" font-size="11" text-anchor="middle">cms.admin/editor/v2</text>
+  
+  <!-- Sidebar -->
+  <rect x="40" y="85" width="180" height="375" fill="#141E33"/>
+  <rect x="60" y="110" width="140" height="32" rx="8" fill="url(#accentG)"/>
+  <text x="100" y="130" fill="#FFFFFF" font-family="Inter, sans-serif" font-size="12" font-weight="600">All Posts</text>
+  <rect x="60" y="155" width="140" height="28" rx="6" fill="#1E293B"/>
+  <text x="100" y="173" fill="#94A3B8" font-family="Inter, sans-serif" font-size="12">Media Library</text>
+  <rect x="60" y="195" width="140" height="28" rx="6" fill="#1E293B"/>
+  <text x="100" y="213" fill="#94A3B8" font-family="Inter, sans-serif" font-size="12">Taxonomy</text>
+  <rect x="60" y="235" width="140" height="28" rx="6" fill="#1E293B"/>
+  <text x="100" y="253" fill="#94A3B8" font-family="Inter, sans-serif" font-size="12">Settings</text>
+  
+  <!-- Editor area -->
+  <rect x="240" y="105" width="340" height="330" rx="10" fill="#0F172A" stroke="#334155"/>
+  <rect x="260" y="125" width="220" height="20" rx="4" fill="#334155"/>
+  <text x="265" y="140" fill="#F8FAFC" font-family="Inter, sans-serif" font-size="13" font-weight="700">Building High Scale APIs</text>
+  <rect x="260" y="160" width="300" height="10" rx="3" fill="#1E293B"/>
+  <rect x="260" y="180" width="280" height="10" rx="3" fill="#1E293B"/>
+  <rect x="260" y="200" width="290" height="10" rx="3" fill="#1E293B"/>
+  <rect x="260" y="230" width="160" height="70" rx="6" fill="#1E293B" stroke="#6366F1" stroke-dasharray="4 4"/>
+  <text x="340" y="270" fill="#818CF8" font-family="Inter, sans-serif" font-size="11" text-anchor="middle">+ Insert Block</text>
+  
+  <!-- Right preview / stats pane -->
+  <rect x="600" y="105" width="140" height="150" rx="10" fill="#0F172A" stroke="#334155"/>
+  <text x="615" y="130" fill="#94A3B8" font-family="Inter, sans-serif" font-size="11">Status</text>
+  <text x="615" y="150" fill="#10B981" font-family="Inter, sans-serif" font-size="13" font-weight="700">● Published</text>
+  <text x="615" y="180" fill="#94A3B8" font-family="Inter, sans-serif" font-size="11">Revisions</text>
+  <text x="615" y="200" fill="#F8FAFC" font-family="Inter, sans-serif" font-size="13" font-weight="600">14 versions</text>
+  <rect x="615" y="215" width="110" height="26" rx="6" fill="url(#accentG)"/>
+  <text x="670" y="232" fill="#FFFFFF" font-family="Inter, sans-serif" font-size="11" font-weight="600" text-anchor="middle">Publish Live</text>
+</svg>

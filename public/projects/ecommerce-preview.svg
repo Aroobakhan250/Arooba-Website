@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="ecomBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#1E293B"/>
+    </linearGradient>
+    <linearGradient id="ecomAccent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6366F1"/>
+      <stop offset="100%" stop-color="#4F46E5"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#ecomBg)"/>
+  <rect x="40" y="40" width="720" height="420" rx="16" fill="#1E293B" stroke="#334155" stroke-width="2"/>
+  
+  <!-- Window top bar -->
+  <path d="M40 40 h720 v45 h-720 z" fill="#0F172A" rx="16"/>
+  <circle cx="65" cy="62" r="6" fill="#EF4444"/>
+  <circle cx="85" cy="62" r="6" fill="#F59E0B"/>
+  <circle cx="105" cy="62" r="6" fill="#10B981"/>
+  <rect x="250" y="52" width="300" height="20" rx="6" fill="#1E293B"/>
+  <text x="400" y="66" fill="#94A3B8" font-family="Inter, sans-serif" font-size="11" text-anchor="middle">store.mern-market.io/shop</text>
+  
+  <!-- Header nav -->
+  <rect x="65" y="100" width="670" height="45" rx="8" fill="#0F172A" stroke="#334155"/>
+  <text x="85" y="128" fill="#F8FAFC" font-family="Inter, sans-serif" font-size="14" font-weight="800">NOVA<tspan fill="#6366F1">STORE</tspan></text>
+  <rect x="220" y="110" width="260" height="25" rx="6" fill="#1E293B"/>
+  <text x="235" y="126" fill="#94A3B8" font-family="Inter, sans-serif" font-size="11">🔍 Search laptops, audio gear...</text>
+  <rect x="640" y="108" width="80" height="28" rx="6" fill="url(#ecomAccent)"/>
+  <text x="680" y="126" fill="#FFFFFF" font-family="Inter, sans-serif" font-size="11" font-weight="600" text-anchor="middle">Cart (3)</text>
+  
+  <!-- Product Grid -->
+  <!-- Product 1 -->
+  <rect x="65" y="160" width="210" height="275" rx="10" fill="#0F172A" stroke="#334155"/>
+  <rect x="80" y="175" width="180" height="130" rx="8" fill="#1E293B"/>
+  <circle cx="170" cy="240" r="35" fill="#6366F1" opacity="0.3"/>
+  <text x="80" y="330" fill="#F8FAFC" font-family="Inter, sans-serif" font-size="13" font-weight="700">Wireless Noise-Canceling ANC</text>
+  <text x="80" y="352" fill="#94A3B8" font-family="Inter, sans-serif" font-size="11">Hi-Res Audio • 40hr Battery</text>
+  <text x="80" y="380" fill="#6366F1" font-family="Inter, sans-serif" font-size="15" font-weight="800">$189.99</text>
+  <rect x="80" y="395" width="180" height="28" rx="6" fill="url(#ecomAccent)"/>
+  <text x="170" y="413" fill="#FFFFFF" font-family="Inter, sans-serif" font-size="11" font-weight="600" text-anchor="middle">Add to Cart</text>
+
+  <!-- Product 2 -->
+  <rect x="295" y="160" width="210" height="275" rx="10" fill="#0F172A" stroke="#334155"/>
+  <rect x="310" y="175" width="180" height="130" rx="8" fill="#1E293B"/>
+  <rect x="350" y="210" width="100" height="60" rx="4" fill="#6366F1" opacity="0.3"/>
+  <text x="310" y="330" fill="#F8FAFC" font-family="Inter, sans-serif" font-size="13" font-weight="700">Ergonomic Mechanical Board</text>
+  <text x="310" y="352" fill="#94A3B8" font-family="Inter, sans-serif" font-size="11">Hot-swappable • RGB Backlit</text>
+  <text x="310" y="380" fill="#6366F1" font-family="Inter, sans-serif" font-size="15" font-weight="800">$129.50</text>
+  <rect x="310" y="395" width="180" height="28" rx="6" fill="url(#ecomAccent)"/>
+  <text x="400" y="413" fill="#FFFFFF" font-family="Inter, sans-serif" font-size="11" font-weight="600" text-anchor="middle">Add to Cart</text>
+
+  <!-- Product 3 -->
+  <rect x="525" y="160" width="210" height="275" rx="10" fill="#0F172A" stroke="#334155"/>
+  <rect x="540" y="175" width="180" height="130" rx="8" fill="#1E293B"/>
+  <ellipse cx="630" cy="240" rx="40" ry="30" fill="#6366F1" opacity="0.3"/>
+  <text x="540" y="330" fill="#F8FAFC" font-family="Inter, sans-serif" font-size="13" font-weight="700">Ultra-Light Gaming Mouse</text>
+  <text x="540" y="352" fill="#94A3B8" font-family="Inter, sans-serif" font-size="11">26K DPI Optical Sensor</text>
+  <text x="540" y="380" fill="#6366F1" font-family="Inter, sans-serif" font-size="15" font-weight="800">$79.00</text>
+  <rect x="540" y="395" width="180" height="28" rx="6" fill="url(#ecomAccent)"/>
+  <text x="630" y="413" fill="#FFFFFF" font-family="Inter, sans-serif" font-size="11" font-weight="600" text-anchor="middle">Add to Cart</text>
+</svg>
