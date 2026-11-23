@@ -13,7 +13,8 @@ import {
   ArrowRight,
   MessageSquare,
 } from "lucide-react";
-import { motion, useReducedMotion } from "framer-motion";
+import { m as motion, useReducedMotion } from "framer-motion";
+import ScaleToFit from "@/components/ScaleToFit";
 
 export default function ServicesSection() {
   const prefersReducedMotion = useReducedMotion();
@@ -55,18 +56,19 @@ export default function ServicesSection() {
         </motion.div>
 
         {/* ── Bento Grid matching sample image layout precisely ── */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-3.5 sm:gap-4">
+        <ScaleToFit designWidth={1100} compactWidth={540}>
+        <div className="grid grid-cols-12 gap-3.5 sm:gap-4">
           {/* ══════════════════════════════════════════════════════════════
               LEFT COLUMN (lg:col-span-6): AI Chatbots + Websites + Animated + Custom Software
              ══════════════════════════════════════════════════════════════ */}
-          <div className="lg:col-span-6 flex flex-col gap-3.5 sm:gap-4">
+          <div className="col-span-6 flex flex-col gap-3.5 sm:gap-4">
             {/* Tile 1: AI Chatbots & Virtual Assistants (Tall card with chat bubbles) */}
             <motion.div
               initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4 }}
-              className="group relative rounded-2xl p-5 sm:p-6 bg-white/80 backdrop-blur-md border border-[#4A90A4]/30 shadow-[0_4px_20px_rgba(74,144,164,0.12)] hover:border-[#4A90A4] hover:shadow-[0_8px_28px_rgba(74,144,164,0.22)] hover:-translate-y-1 transition-all duration-300"
+              className="group relative rounded-2xl p-5 sm:p-6 compact:p-3.5 bg-[#16222F]/90 border border-cyan-400/40 shadow-[0_0_20px_rgba(6,182,212,0.12)] hover:border-cyan-400/70 hover:shadow-[0_8px_28px_rgba(6,182,212,0.22)] hover:-translate-y-1 transition-all duration-300"
             >
               {/* Badge */}
               <div className="mb-3.5 flex items-center justify-between">
@@ -119,14 +121,14 @@ export default function ServicesSection() {
             </motion.div>
 
             {/* Split Row: Websites (col-1) + Animated sites (col-2) */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
+            <div className="grid grid-cols-2 gap-3.5 sm:gap-4">
               {/* Tile 2: Websites */}
               <motion.div
                 initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: 0.08 }}
-                className="group relative rounded-2xl p-4 sm:p-5 bg-[#16222F]/80 backdrop-blur-md border border-[#C8D9E6]/20 hover:border-cyan-400/50 hover:shadow-[0_8px_24px_rgba(6,182,212,0.15)] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between min-h-[145px]"
+                className="group relative rounded-2xl p-4 sm:p-5 compact:p-3 bg-[#16222F]/80 border border-[#C8D9E6]/20 hover:border-cyan-400/50 hover:shadow-[0_8px_24px_rgba(6,182,212,0.15)] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between min-h-[145px]"
               >
                 <div>
                   <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-[#1b3a4b] to-[#0f4c5c] border border-cyan-400/30 flex items-center justify-center text-cyan-400 mb-3 shadow-sm group-hover:brightness-125 transition-all">
@@ -155,7 +157,7 @@ export default function ServicesSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: 0.12 }}
-                className="group relative rounded-2xl p-4 sm:p-5 bg-[#16222F]/80 backdrop-blur-md border border-[#C8D9E6]/20 hover:border-cyan-400/50 hover:shadow-[0_8px_24px_rgba(6,182,212,0.15)] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between min-h-[145px]"
+                className="group relative rounded-2xl p-4 sm:p-5 compact:p-3 bg-[#16222F]/80 border border-[#C8D9E6]/20 hover:border-cyan-400/50 hover:shadow-[0_8px_24px_rgba(6,182,212,0.15)] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between min-h-[145px]"
               >
                 <div>
                   <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-[#1b3a4b] to-[#0f4c5c] border border-cyan-400/30 flex items-center justify-center text-cyan-400 mb-3 shadow-sm group-hover:brightness-125 transition-all">
@@ -185,7 +187,7 @@ export default function ServicesSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: 0.16 }}
-              className="group relative rounded-2xl p-4 sm:p-5 bg-[#16222F]/80 backdrop-blur-md border border-[#C8D9E6]/20 hover:border-cyan-400/50 hover:shadow-[0_8px_24px_rgba(6,182,212,0.15)] hover:-translate-y-1 transition-all duration-300 flex items-center justify-between gap-4"
+              className="group relative rounded-2xl p-4 sm:p-5 compact:p-3 bg-[#16222F]/80 border border-[#C8D9E6]/20 hover:border-cyan-400/50 hover:shadow-[0_8px_24px_rgba(6,182,212,0.15)] hover:-translate-y-1 transition-all duration-300 flex items-center justify-between gap-4"
             >
               <div className="flex items-center gap-3.5">
                 <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#1b3a4b] to-[#0f4c5c] border border-cyan-400/30 flex items-center justify-center text-cyan-400 shadow-sm shrink-0 group-hover:brightness-125 transition-all">
@@ -214,14 +216,14 @@ export default function ServicesSection() {
           {/* ══════════════════════════════════════════════════════════════
               RIGHT COLUMN (lg:col-span-6): Admin Dashboards + (SaaS & E-commerce) + Game Apps
              ══════════════════════════════════════════════════════════════ */}
-          <div className="lg:col-span-6 flex flex-col gap-3.5 sm:gap-4">
+          <div className="col-span-6 flex flex-col gap-3.5 sm:gap-4">
             {/* Tile 5: Admin dashboards and portals (Wide card with vertical bar chart) */}
             <motion.div
               initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: 0.08 }}
-              className="group relative rounded-2xl p-5 sm:p-6 bg-[#16222F]/90 backdrop-blur-md border border-cyan-400/40 shadow-[0_0_20px_rgba(6,182,212,0.14)] hover:border-cyan-300 hover:shadow-[0_0_28px_rgba(6,182,212,0.25)] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between min-h-[145px]"
+              className="group relative rounded-2xl p-5 sm:p-6 compact:p-3.5 bg-[#16222F]/90 border border-cyan-400/40 shadow-[0_0_20px_rgba(6,182,212,0.14)] hover:border-cyan-300 hover:shadow-[0_0_28px_rgba(6,182,212,0.25)] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between min-h-[145px]"
             >
               <div className="flex items-start justify-between gap-4">
                 <div className="flex-1">
@@ -258,14 +260,14 @@ export default function ServicesSection() {
             </motion.div>
 
             {/* Split Row: SaaS platforms + E-commerce */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
+            <div className="grid grid-cols-2 gap-3.5 sm:gap-4">
               {/* Tile 6: SaaS platforms */}
               <motion.div
                 initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: 0.12 }}
-                className="group relative rounded-2xl p-4 sm:p-5 bg-[#16222F]/90 backdrop-blur-md border border-cyan-400/40 shadow-[0_0_16px_rgba(6,182,212,0.12)] hover:border-cyan-300 hover:shadow-[0_0_24px_rgba(6,182,212,0.22)] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between min-h-[145px]"
+                className="group relative rounded-2xl p-4 sm:p-5 compact:p-3 bg-[#16222F]/90 border border-cyan-400/40 shadow-[0_0_16px_rgba(6,182,212,0.12)] hover:border-cyan-300 hover:shadow-[0_0_24px_rgba(6,182,212,0.22)] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between min-h-[145px]"
               >
                 <div>
                   <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-[#1b3a4b] to-[#0f4c5c] border border-cyan-400/30 flex items-center justify-center text-cyan-400 mb-3 shadow-sm group-hover:brightness-125 transition-all">
@@ -294,7 +296,7 @@ export default function ServicesSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: 0.16 }}
-                className="group relative rounded-2xl p-4 sm:p-5 bg-[#16222F]/80 backdrop-blur-md border border-[#C8D9E6]/20 hover:border-cyan-400/50 hover:shadow-[0_8px_24px_rgba(6,182,212,0.15)] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between min-h-[145px]"
+                className="group relative rounded-2xl p-4 sm:p-5 compact:p-3 bg-[#16222F]/80 border border-[#C8D9E6]/20 hover:border-cyan-400/50 hover:shadow-[0_8px_24px_rgba(6,182,212,0.15)] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between min-h-[145px]"
               >
                 <div>
                   <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-[#1b3a4b] to-[#0f4c5c] border border-cyan-400/30 flex items-center justify-center text-cyan-400 mb-3 shadow-sm group-hover:brightness-125 transition-all">
@@ -324,7 +326,7 @@ export default function ServicesSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: 0.2 }}
-              className="group relative rounded-2xl p-5 sm:p-6 bg-[#16222F]/90 backdrop-blur-md border border-[#C8D9E6]/20 hover:border-cyan-400/50 hover:shadow-[0_8px_24px_rgba(6,182,212,0.18)] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
+              className="group relative rounded-2xl p-5 sm:p-6 compact:p-3.5 bg-[#16222F]/90 border border-[#C8D9E6]/20 hover:border-cyan-400/50 hover:shadow-[0_8px_24px_rgba(6,182,212,0.18)] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-center justify-between mb-3">
@@ -415,6 +417,7 @@ export default function ServicesSection() {
             </motion.div>
           </div>
         </div>
+        </ScaleToFit>
 
         {/* ── Bottom Consultation Banner ── */}
         <motion.div
@@ -425,7 +428,7 @@ export default function ServicesSection() {
             duration: prefersReducedMotion ? 0 : 0.5,
             delay: prefersReducedMotion ? 0 : 0.15,
           }}
-          className="mt-12 sm:mt-14 rounded-2xl p-5 sm:p-7 bg-[#16222F]/90 backdrop-blur-md border border-cyan-400/30 shadow-[0_0_24px_rgba(6,182,212,0.1)] flex flex-col sm:flex-row items-center justify-between gap-5 text-center sm:text-left"
+          className="mt-12 sm:mt-14 rounded-2xl p-5 sm:p-7 bg-[#16222F]/90 border border-cyan-400/30 shadow-[0_0_24px_rgba(6,182,212,0.1)] flex flex-col sm:flex-row items-center justify-between gap-5 text-center sm:text-left"
         >
           <div className="flex items-center gap-4">
             <div className="w-11 h-11 rounded-xl bg-gradient-to-tr from-[#1b3a4b] to-[#0f4c5c] border border-cyan-400/30 flex items-center justify-center text-cyan-400 shrink-0">

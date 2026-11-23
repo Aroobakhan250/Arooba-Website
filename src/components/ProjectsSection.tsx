@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, ArrowRight, MousePointer2 } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { m as motion, AnimatePresence } from "framer-motion";
 import { PROJECTS_DATA, type ProjectItem } from "@/data/portfolioData";
 import ScaleToFit from "@/components/ScaleToFit";
 
@@ -113,7 +113,7 @@ function ProjectCard({ project, index }: { project: ProjectItem; index: number }
                   src={src}
                   alt={isThumb ? `${name} thumbnail` : `${name} preview ${idx + 1}`}
                   fill
-                  quality={92}
+                  quality={80}
                   className={
                     isThumb
                       ? "object-cover object-center transition-transform duration-700 group-hover:scale-[1.03]"
@@ -127,23 +127,24 @@ function ProjectCard({ project, index }: { project: ProjectItem; index: number }
         })}
 
         {/* Category chip */}
-        <span className="absolute left-3 top-3 z-20 rounded-full bg-white/95 px-3 py-1 text-[11px] font-semibold text-[#1F3A48] shadow-sm backdrop-blur">
+        <span className="absolute left-3 top-3 compact:left-2 compact:top-2 z-20 rounded-full bg-white/95 px-3 py-1 compact:px-2 compact:py-0.5 text-[11px] compact:text-[10px] font-semibold text-[#1F3A48] shadow-sm">
           {project.category}
         </span>
 
         {/* Hint at rest / progress dots on hover */}
         <div className="absolute bottom-3 left-1/2 z-20 -translate-x-1/2">
           <span
-            className={`flex items-center gap-1.5 rounded-full bg-[#1F3A48]/85 px-3 py-1 text-[11px] font-medium text-white backdrop-blur transition-opacity duration-300 ${
+            className={`flex items-center gap-1.5 rounded-full bg-[#1F3A48]/85 px-3 py-1 compact:px-2 compact:py-0.5 text-[11px] compact:text-[10px] font-medium text-white transition-opacity duration-300 ${
               isHovered ? "opacity-0" : "opacity-100"
             }`}
             aria-hidden
           >
             <MousePointer2 className="h-3 w-3" />
-            Hover to preview
+            <span className="compact:hidden">Hover to preview</span>
+            <span className="hidden compact:inline">Tap to preview</span>
           </span>
           <div
-            className={`absolute inset-0 flex items-center justify-center gap-1 rounded-full bg-[#1F3A48]/70 px-3 backdrop-blur transition-opacity duration-300 ${
+            className={`absolute inset-0 flex items-center justify-center gap-1 rounded-full bg-[#1F3A48]/70 px-3 transition-opacity duration-300 ${
               isHovered ? "opacity-100" : "opacity-0"
             }`}
             aria-hidden
@@ -161,47 +162,49 @@ function ProjectCard({ project, index }: { project: ProjectItem; index: number }
       </div>
 
       {/* Content */}
-      <div className="flex flex-1 flex-col p-4">
-        <h3 className="font-display text-[17px] font-bold leading-snug tracking-tight text-[#1F3A48]">
+      <div className="flex flex-1 flex-col p-4 compact:p-3">
+        <h3 className="font-display text-[17px] compact:text-[15px] compact:line-clamp-2 font-bold leading-snug tracking-tight text-[#1F3A48]">
           {name}
         </h3>
-        <p className="mt-0.5 line-clamp-1 text-[12px] font-medium text-[#357A8A]">
+        <p className="mt-0.5 line-clamp-1 text-[12px] compact:text-[11.5px] font-medium text-[#357A8A]">
           {kind || project.subtitle}
         </p>
 
-        <p className="mt-2.5 line-clamp-2 text-[13px] leading-relaxed text-[#4A6B7A]">
+        <p className="mt-2.5 line-clamp-2 compact:hidden text-[13px] leading-relaxed text-[#4A6B7A]">
           {project.description}
         </p>
 
-        <ul className="mb-4 mt-3 flex flex-wrap gap-1.5">
+        <ul className="mb-4 mt-3 compact:mb-3 compact:mt-2 flex flex-wrap gap-1.5">
           {project.tags.slice(0, 3).map((tag) => (
             <li
               key={tag}
-              className="rounded-md border border-[#4A90A4]/20 bg-white/80 px-2 py-0.5 text-[11px] font-medium text-[#357A8A]"
+              className="rounded-md border border-[#4A90A4]/20 bg-white/80 px-2 py-0.5 text-[11px] compact:text-[10.5px] compact:nth-[n+3]:hidden font-medium text-[#357A8A]"
             >
               {tag}
             </li>
           ))}
           {project.tags.length > 3 && (
-            <li className="px-1.5 py-1 text-[11.5px] font-medium text-[#4A6B7A]">
+            <li className="px-1.5 py-1 text-[11.5px] compact:hidden font-medium text-[#4A6B7A]">
               +{project.tags.length - 3}
             </li>
           )}
         </ul>
 
-        <div className="mt-auto flex items-center justify-between gap-3 border-t border-[#4A90A4]/20 pt-3">
+        <div className="mt-auto flex items-center justify-between gap-3 compact:gap-2 border-t border-[#4A90A4]/20 pt-3 compact:pt-2.5">
           <Link
             href={`/gallery#${project.id}`}
-            className="inline-flex items-center gap-1 text-[12px] font-semibold text-[#357A8A] transition-colors hover:text-[#1F3A48]"
+            className="inline-flex items-center gap-1 text-[12px] compact:text-[11.5px] font-semibold text-[#357A8A] transition-colors hover:text-[#1F3A48]"
           >
-            View all screens
+            <span className="compact:hidden">View all screens</span>
+            <span className="hidden compact:inline">Screens</span>
             <ArrowUpRight className="h-3.5 w-3.5" />
           </Link>
           <a
             href="#contact"
-            className="group/btn inline-flex items-center gap-1.5 rounded-full bg-[#1F3A48] px-3.5 py-1.5 text-[11.5px] font-semibold text-white transition-colors hover:bg-[#4A90A4]"
+            className="group/btn inline-flex items-center gap-1.5 rounded-full bg-[#1F3A48] px-3.5 compact:px-3 py-1.5 text-[11.5px] font-semibold text-white transition-colors hover:bg-[#4A90A4]"
           >
-            Request similar
+            <span className="compact:hidden">Request similar</span>
+            <span className="hidden compact:inline">Request</span>
             <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover/btn:translate-x-1" />
           </a>
         </div>
@@ -286,8 +289,8 @@ export default function ProjectsSection() {
         </div>
 
         {/* Grid */}
-        <ScaleToFit designWidth={860}>
-        <div className="grid grid-cols-2 gap-5">
+        <ScaleToFit designWidth={860} compactWidth={440}>
+        <div className="grid grid-cols-2 gap-5 compact:gap-2.5">
           <AnimatePresence mode="popLayout">
             {filtered.map((project, i) => (
               <ProjectCard key={project.id} project={project} index={i} />

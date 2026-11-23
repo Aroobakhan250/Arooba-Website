@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* compact: variant, active inside a ScaleToFit block on small screens */
+@custom-variant compact ([data-compact] &);
+
 @layer base {
   :root {
     /* ── Light Blue Theme Color Palette ── */
@@ -33,8 +36,6 @@
   /* ── Core glass utilities ── */
   .glass-surface {
     background: rgba(255, 255, 255, 0.70);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
     border: 1px solid rgba(74, 144, 164, 0.20);
     box-shadow: 0 4px 24px rgba(74, 144, 164, 0.10);
   }
@@ -50,15 +51,11 @@
 
   .glass-pill {
     background: rgba(255, 255, 255, 0.65);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
     border: 1px solid rgba(74, 144, 164, 0.25);
   }
 
   .glass-card-deep {
     background: rgba(255, 255, 255, 0.80);
-    backdrop-filter: blur(28px);
-    -webkit-backdrop-filter: blur(28px);
     border: 1px solid rgba(74, 144, 164, 0.18);
     box-shadow: 0 12px 40px rgba(74, 144, 164, 0.12), inset 0 1px 0 rgba(255,255,255,0.90);
   }
@@ -77,8 +74,6 @@
 
   .glass-box {
     background: var(--glass-bg);
-    backdrop-filter: blur(var(--glass-blur));
-    -webkit-backdrop-filter: blur(var(--glass-blur));
     border: 1px solid var(--glass-border);
     border-radius: 16px;
     box-shadow: 0 8px 32px rgba(74, 144, 164, 0.10);
@@ -87,8 +82,6 @@
   /* Sky-blue soft glass boxes */
   .glass-box-sky {
     background: rgba(184, 216, 232, 0.25);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
     border: 1px solid rgba(74, 144, 164, 0.22);
     border-radius: 16px;
     box-shadow: 0 8px 32px rgba(74, 144, 164, 0.10);
@@ -138,6 +131,13 @@
   opacity: 0;
   transition: opacity 0.35s;
   animation: spinAngle 3.2s linear infinite;
+  animation-play-state: paused;
+}
+.glow-card:hover::before,
+.glow-card:hover::after,
+.glow-card:focus-within::before,
+.glow-card:focus-within::after {
+  animation-play-state: running;
 }
 /* soft glow under the border */
 .glow-card::after {

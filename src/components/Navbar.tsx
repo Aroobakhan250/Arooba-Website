@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { m as motion, AnimatePresence } from "framer-motion";
 import ThemeToggle from "@/components/ThemeToggle";
 
 const NAV_LINKS = [
@@ -32,8 +32,8 @@ export default function Navbar() {
       <div
         className={`max-w-7xl mx-auto rounded-full transition-all duration-300 flex items-center justify-between gap-2 px-4 sm:px-8 py-3 sm:py-3.5 ${
           scrolled
-            ? "bg-white/90 backdrop-blur-xl border border-[#4A90A4]/20 shadow-2xl shadow-[#4A90A4]/10"
-            : "bg-white/70 backdrop-blur-md border border-[#4A90A4]/15"
+            ? "bg-white/90 border border-[#4A90A4]/20 shadow-2xl shadow-[#4A90A4]/10"
+            : "bg-white/70 border border-[#4A90A4]/15"
         }`}
       >
         {/* Brand Logo - Icon + Full Name + Title */}
@@ -117,7 +117,7 @@ export default function Navbar() {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="lg:hidden mt-3 max-w-7xl mx-auto rounded-3xl bg-white/95 backdrop-blur-2xl border border-[#4A90A4]/20 p-5 shadow-2xl shadow-[#4A90A4]/10"
+            className="lg:hidden mt-3 max-w-7xl mx-auto rounded-3xl bg-white/95 border border-[#4A90A4]/20 p-5 shadow-2xl shadow-[#4A90A4]/10"
           >
             <div className="flex flex-col space-y-2">
               {NAV_LINKS.map((link) => (

@@ -12,7 +12,7 @@ import {
   PhoneCall,
   Briefcase,
 } from "lucide-react";
-import { motion } from "framer-motion";
+import { m as motion } from "framer-motion";
 import { LinkedinIcon } from "@/components/BrandIcons";
 import { PERSONAL_INFO } from "@/data/portfolioData";
 
@@ -266,7 +266,7 @@ export default function ContactSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.55, delay: 0.4 }}
-              className="flex items-start gap-3.5 rounded-2xl border border-[#4A90A4]/25 bg-white/80 p-4 backdrop-blur"
+              className="flex items-start gap-3.5 rounded-2xl border border-[#4A90A4]/25 bg-white/80 p-4"
             >
               <span className="animate-float flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-[#F2A33A] to-[#D9841A] text-white shadow-md">
                 <Zap className="h-5 w-5" />

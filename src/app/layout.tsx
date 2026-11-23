@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Bricolage_Grotesque } from "next/font/google";
 import Script from "next/script";
+import MotionProvider from "@/components/MotionProvider";
 import "./globals.css";
 
 const inter = Inter({
@@ -74,7 +75,7 @@ export default function RootLayout({
         <Script id="theme-init" strategy="beforeInteractive">
           {"try{if(localStorage.getItem('portfolio-theme')==='dark'){document.documentElement.dataset.theme='dark'}}catch(e){}"}
         </Script>
-        {children}
+        <MotionProvider>{children}</MotionProvider>
       </body>
     </html>
   );

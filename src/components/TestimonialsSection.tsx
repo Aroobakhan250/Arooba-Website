@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { ChevronLeft, ChevronRight, Star, Quote, MessagesSquare } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { m as motion, AnimatePresence } from "framer-motion";
 import { TESTIMONIALS_DATA } from "@/data/portfolioData";
 
 const TONES = [

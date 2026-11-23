@@ -11,7 +11,7 @@ import {
   CheckCircle2,
   RefreshCcw,
 } from "lucide-react";
-import { motion } from "framer-motion";
+import { m as motion } from "framer-motion";
 import ScaleToFit from "@/components/ScaleToFit";
 
 const STEP_STYLES = [
@@ -23,6 +23,7 @@ const STEP_STYLES = [
     g1: "#4a90a4",
     g2: "#9ad4e6",
     output: "Scope & roadmap",
+    short: "Discovery",
   },
   {
     icon: PenTool,
@@ -32,6 +33,7 @@ const STEP_STYLES = [
     g1: "#5b8def",
     g2: "#a9c4ff",
     output: "Approved designs",
+    short: "Design",
   },
   {
     icon: Code2,
@@ -41,6 +43,7 @@ const STEP_STYLES = [
     g1: "#8b6fe0",
     g2: "#c9b8ff",
     output: "Working build",
+    short: "Develop",
   },
   {
     icon: ShieldCheck,
@@ -50,6 +53,7 @@ const STEP_STYLES = [
     g1: "#f2a33a",
     g2: "#ffd9a0",
     output: "Tested release",
+    short: "Testing",
   },
   {
     icon: Rocket,
@@ -59,6 +63,7 @@ const STEP_STYLES = [
     g1: "#3fbf9f",
     g2: "#9be8d2",
     output: "Live & supported",
+    short: "Launch",
   },
 ];
 
@@ -93,9 +98,9 @@ export default function WorkflowSection() {
           </p>
         </motion.div>
 
-        <ScaleToFit designWidth={1100}>
+        <ScaleToFit designWidth={1100} compactWidth={440}>
         {/* Timeline rail */}
-        <div className="relative mb-6" aria-hidden>
+        <div className="relative mb-6 compact:mb-3" aria-hidden>
           <div className="absolute left-[10%] right-[10%] top-1/2 h-[3px] -translate-y-1/2 rounded-full bg-[#B8D8E8]/70" />
           <motion.div
             className="absolute left-[10%] right-[10%] top-1/2 h-[3px] origin-left -translate-y-1/2 rounded-full bg-gradient-to-r from-[#4A90A4] via-[#8B6FE0] to-[#3FBF9F]"
@@ -112,7 +117,7 @@ export default function WorkflowSection() {
                   whileInView={{ scale: 1, opacity: 1 }}
                   viewport={{ once: true, margin: "-60px" }}
                   transition={{ delay: 0.25 + i * 0.3, type: "spring", stiffness: 260, damping: 18 }}
-                  className={`relative flex h-11 w-11 items-center justify-center rounded-full bg-gradient-to-br font-display text-sm font-extrabold text-white shadow-lg ring-4 ring-[#F5FBFF] ${STEP_STYLES[i % 5].grad}`}
+                  className={`relative flex h-11 w-11 compact:h-8 compact:w-8 items-center justify-center rounded-full bg-gradient-to-br font-display text-sm compact:text-[11px] font-extrabold text-white shadow-lg ring-4 ring-[#F5FBFF] ${STEP_STYLES[i % 5].grad}`}
                 >
                   {step.number}
                 </motion.span>
@@ -122,7 +127,7 @@ export default function WorkflowSection() {
         </div>
 
         {/* Cards */}
-        <div className="grid grid-cols-5 gap-5">
+        <div className="grid grid-cols-5 gap-5 compact:gap-1.5">
           {WORKFLOW_STEPS.map((step: StepItem, index: number) => {
             const s = STEP_STYLES[index % STEP_STYLES.length];
             const Icon = s.icon;
@@ -136,38 +141,39 @@ export default function WorkflowSection() {
                 className="group glow-card [--glow-r:22px]"
                 style={{ "--g1": s.g1, "--g2": s.g2 } as React.CSSProperties}
               >
-                <div className="relative z-[1] flex h-full flex-col overflow-hidden rounded-[20.5px] bg-gradient-to-b from-[#EAF6FC] to-[#DCEEF8] p-5">
+                <div className="relative z-[1] flex h-full flex-col overflow-hidden rounded-[20.5px] bg-gradient-to-b from-[#EAF6FC] to-[#DCEEF8] p-5 compact:p-1.5 compact:pt-3 compact:items-center compact:text-center">
                   <div className="card-shine" aria-hidden />
 
                   {/* big faint step number */}
                   <span
-                    className={`pointer-events-none absolute -right-1 -top-3 select-none font-display text-[84px] font-extrabold leading-none opacity-[0.09] ${s.text}`}
+                    className={`pointer-events-none absolute -right-1 -top-3 compact:hidden select-none font-display text-[84px] font-extrabold leading-none opacity-[0.09] ${s.text}`}
                     aria-hidden
                   >
                     {step.number}
                   </span>
 
-                  <div className="mb-4 flex items-center justify-between">
+                  <div className="mb-4 compact:mb-2 flex items-center justify-between compact:justify-center">
                     <span
-                      className={`flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br text-white shadow-md transition-transform duration-500 group-hover:rotate-[8deg] group-hover:scale-110 ${s.grad}`}
+                      className={`flex h-12 w-12 compact:h-9 compact:w-9 items-center justify-center rounded-2xl bg-gradient-to-br text-white shadow-md transition-transform duration-500 group-hover:rotate-[8deg] group-hover:scale-110 ${s.grad}`}
                     >
                       <Icon className="h-6 w-6" />
                     </span>
                     <span
-                      className={`rounded-full border px-2.5 py-0.5 text-[11px] font-semibold ${s.soft} ${s.text}`}
+                      className={`rounded-full border px-2.5 py-0.5 text-[11px] compact:hidden font-semibold ${s.soft} ${s.text}`}
                     >
                       Phase {index + 1}
                     </span>
                   </div>
 
-                  <h3 className="font-display text-[17px] font-bold leading-snug text-[#1F3A48]">
-                    {step.title}
+                  <h3 className="font-display text-[17px] compact:text-[13px] font-bold leading-snug text-[#1F3A48]">
+                    <span className="compact:hidden">{step.title}</span>
+                    <span className="hidden compact:inline">{s.short}</span>
                   </h3>
-                  <p className="mb-5 mt-2 text-[13px] leading-relaxed text-[#4A6B7A]">
+                  <p className="mb-5 mt-2 compact:hidden text-[13px] leading-relaxed text-[#4A6B7A]">
                     {step.description}
                   </p>
 
-                  <div className="mt-auto flex items-center gap-1.5 border-t border-[#4A90A4]/20 pt-3 text-[12px] font-semibold text-[#1F3A48]">
+                  <div className="mt-auto compact:hidden flex items-center gap-1.5 border-t border-[#4A90A4]/20 pt-3 text-[12px] font-semibold text-[#1F3A48]">
                     <CheckCircle2 className={`h-4 w-4 ${s.text}`} />
                     {s.output}
                   </div>

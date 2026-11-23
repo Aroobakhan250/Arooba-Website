@@ -16,7 +16,7 @@ import {
   Film,
   LayoutGrid,
 } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { m as motion, AnimatePresence } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { PROJECTS_DATA } from "@/data/portfolioData";
@@ -226,7 +226,7 @@ export default function GalleryPage() {
           <div
             role="tablist"
             aria-label="Filter by media type"
-            className="inline-flex items-center gap-1 rounded-2xl border border-[#B8D8E8] bg-white/80 p-1 shadow-sm backdrop-blur"
+            className="inline-flex items-center gap-1 rounded-2xl border border-[#B8D8E8] bg-white/80 p-1 shadow-sm"
           >
             {typeTabs.map((t) => {
               const active = activeMediaType === t.key;
@@ -257,7 +257,6 @@ export default function GalleryPage() {
 
         {/* Grid */}
         <motion.div
-          layout
           className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
         >
           <AnimatePresence mode="popLayout">
@@ -267,7 +266,6 @@ export default function GalleryPage() {
                 <motion.button
                   type="button"
                   key={`${item.projectId}-${item.mediaUrl}`}
-                  layout
                   initial={{ opacity: 0, scale: 0.94, y: 20 }}
                   animate={{ opacity: 1, scale: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.94 }}
@@ -309,7 +307,7 @@ export default function GalleryPage() {
                           src={item.mediaUrl}
                           alt={`${shortName(item.projectTitle)}, screen ${item.index}`}
                           fill
-                          quality={92}
+                          quality={80}
                           className="object-contain object-center transition-transform duration-500 group-hover:scale-105"
                           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                         />
@@ -321,7 +319,7 @@ export default function GalleryPage() {
                           <Maximize2 className="h-3 w-3" />
                           {item.isVideo ? "Play full screen" : "View full size"}
                         </span>
-                        <span className="rounded-md bg-white/20 px-2 py-0.5 text-[11px] font-medium text-white backdrop-blur">
+                        <span className="rounded-md bg-white/20 px-2 py-0.5 text-[11px] font-medium text-white">
                           {item.index} / {item.totalProjectMedia}
                         </span>
                       </div>
@@ -393,7 +391,7 @@ export default function GalleryPage() {
             role="dialog"
             aria-modal="true"
             aria-label={`${shortName(activeItem.projectTitle)} preview`}
-            className="keep-original fixed inset-0 z-50 flex select-none flex-col justify-between bg-[#0E1B2C]/92 p-4 backdrop-blur-xl sm:p-6"
+            className="keep-original fixed inset-0 z-50 flex select-none flex-col justify-between bg-[#0E1B2C]/92 p-4 sm:p-6"
             onClick={() => setLightboxIndex(null)}
           >
             <div

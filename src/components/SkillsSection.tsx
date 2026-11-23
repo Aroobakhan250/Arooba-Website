@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { SKILLS_DATA, type SkillItem } from "@/data/portfolioData";
 import { Code2, Database, Globe, Server, Layers } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { m as motion, AnimatePresence } from "framer-motion";
 import ScaleToFit from "@/components/ScaleToFit";
 
 type Cat = SkillItem["category"];
@@ -81,31 +81,31 @@ function SkillCard({ skill, index }: { skill: SkillItem; index: number }) {
       className="group glow-card [--glow-r:20px]"
       style={{ "--g1": c.g1, "--g2": c.g2 } as React.CSSProperties}
     >
-      <div className="relative z-[1] flex h-full flex-col items-center overflow-hidden rounded-[18.5px] bg-gradient-to-b from-[#EAF6FC] to-[#DCEEF8] px-4 pb-4 pt-5 text-center">
+      <div className="relative z-[1] flex h-full flex-col items-center overflow-hidden rounded-[18.5px] bg-gradient-to-b from-[#EAF6FC] to-[#DCEEF8] px-4 pb-4 pt-5 compact:px-2.5 compact:pb-3 compact:pt-3.5 text-center">
         <div className="card-shine" aria-hidden />
 
         <span
-          className={`mb-3 flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br text-white shadow-md transition-transform duration-500 group-hover:rotate-[8deg] group-hover:scale-110 ${c.grad}`}
+          className={`mb-3 compact:mb-2 flex h-12 w-12 compact:h-10 compact:w-10 items-center justify-center rounded-2xl bg-gradient-to-br text-white shadow-md transition-transform duration-500 group-hover:rotate-[8deg] group-hover:scale-110 ${c.grad}`}
         >
           <span className="font-mono text-sm font-bold tracking-wider">
             {skill.name.slice(0, 2).toUpperCase()}
           </span>
         </span>
 
-        <h3 className="font-display text-[15px] font-bold leading-tight text-[#1F3A48]">
+        <h3 className="font-display text-[15px] compact:text-[14px] font-bold leading-tight text-[#1F3A48]">
           {skill.name}
         </h3>
 
         <span
-          className={`mt-2 inline-flex items-center gap-1 rounded-full border px-2.5 py-0.5 text-[11px] font-semibold ${c.soft} ${c.text}`}
+          className={`mt-2 inline-flex items-center gap-1 rounded-full border px-2.5 compact:px-1.5 py-0.5 text-[11px] compact:text-[10.5px] font-semibold ${c.soft} ${c.text}`}
         >
           <Icon className="h-3 w-3" />
           {skill.category}
         </span>
 
         {/* Proficiency */}
-        <div className="mt-3.5 w-full">
-          <div className="mb-1 flex items-center justify-between text-[10.5px] font-medium text-[#4A6B7A]">
+        <div className="mt-3.5 compact:mt-2.5 w-full">
+          <div className="mb-1 flex items-center justify-between text-[10.5px] compact:text-[10px] font-medium text-[#4A6B7A]">
             <span>{skill.level}</span>
             <span>{pct}%</span>
           </div>
@@ -200,8 +200,8 @@ export default function SkillsSection() {
         </div>
 
         {/* Grid */}
-        <ScaleToFit designWidth={780}>
-        <div className="grid grid-cols-3 gap-4">
+        <ScaleToFit designWidth={780} compactWidth={440}>
+        <div className="grid grid-cols-3 gap-4 compact:gap-2.5">
           <AnimatePresence mode="popLayout">
             {shown.map((skill, i) => (
               <SkillCard key={skill.name} skill={skill} index={i} />

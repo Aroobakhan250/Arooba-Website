@@ -3,7 +3,7 @@
 import React, { useSyncExternalStore } from "react";
 import Link from "next/link";
 import { Mail, ArrowUp, ArrowRight, MapPin, Clock, Briefcase, MessageCircle } from "lucide-react";
-import { motion } from "framer-motion";
+import { m as motion } from "framer-motion";
 import { LinkedinIcon } from "@/components/BrandIcons";
 import { PERSONAL_INFO } from "@/data/portfolioData";
 
@@ -89,7 +89,7 @@ export default function Footer() {
 
           <div className="relative flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
             <div className="max-w-xl">
-              <p className="mb-3 inline-flex items-center gap-2 rounded-full bg-white/10 px-3.5 py-1 text-[12px] font-semibold text-[#CDEBF5] backdrop-blur">
+              <p className="mb-3 inline-flex items-center gap-2 rounded-full bg-white/10 px-3.5 py-1 text-[12px] font-semibold text-[#CDEBF5]">
                 <span className="h-2 w-2 animate-pulse rounded-full bg-[#4FD1A1]" />
                 Available for new projects
               </p>

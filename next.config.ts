@@ -3,9 +3,11 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   /* config options here */
   cacheComponents: true,
+  experimental: { optimizePackageImports: ["lucide-react", "framer-motion"] },
   partialPrefetching: true,
   images: {
-    qualities: [75, 92, 95, 100],
+    qualities: [75, 80, 100],
+    formats: ["image/avif", "image/webp"],
     remotePatterns: [
       {
         protocol: "https",

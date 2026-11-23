@@ -4,21 +4,37 @@ import React, { useLayoutEffect, useRef, useState } from "react";
 
 /**
  * Renders its children at a fixed "design width" (the desktop layout) and
- * scales the whole block down to fit narrower screens, so the layout looks the
- * same on every device. It never scales up; on wide screens it is centred.
+ * scales the whole block to fit the screen, so the layout looks the same on
+ * every device.
+ *
+ * On small screens (container narrower than `compactBelow`) it switches to a
+ * narrower `compactWidth` design and sets `data-compact` on the wrapper, which
+ * enables the `compact:` Tailwind variant so cards can show a leaner layout
+ * with larger text. Without `compactWidth` it just scales the desktop design.
  */
 export default function ScaleToFit({
   designWidth,
+  compactWidth,
+  compactBelow = 600,
   children,
   className = "",
 }: {
   designWidth: number;
+  compactWidth?: number;
+  compactBelow?: number;
   children: React.ReactNode;
   className?: string;
 }) {
   const outerRef = useRef<HTMLDivElement>(null);
   const innerRef = useRef<HTMLDivElement>(null);
-  const [state, setState] = useState({ scale: 1, left: 0, height: 0, ready: false });
+  const [s, setS] = useState({
+    scale: 1,
+    left: 0,
+    height: 0,
+    width: designWidth,
+    compact: false,
+    ready: false,
+  });
 
   useLayoutEffect(() => {
     const outer = outerRef.current;
@@ -27,9 +43,19 @@ export default function ScaleToFit({
 
     const measure = () => {
       const w = outer.clientWidth;
-      const scale = Math.min(1, w / designWidth);
-      const left = Math.max(0, (w - designWidth * scale) / 2);
-      setState({ scale, left, height: inner.offsetHeight * scale, ready: true });
+      const compact = compactWidth !== undefined && w < compactBelow;
+      const dw = compact ? (compactWidth as number) : designWidth;
+      // Compact designs may scale up a little so they fill phone-sized screens.
+      const scale = Math.min(compact ? 1.3 : 1, w / dw);
+      const left = Math.max(0, (w - dw * scale) / 2);
+      setS({
+        scale,
+        left,
+        height: inner.offsetHeight * scale,
+        width: dw,
+        compact,
+        ready: true,
+      });
     };
 
     measure();
@@ -37,21 +63,22 @@ export default function ScaleToFit({
     ro.observe(outer);
     ro.observe(inner);
     return () => ro.disconnect();
-  }, [designWidth]);
+  }, [designWidth, compactWidth, compactBelow]);
 
   return (
     <div
       ref={outerRef}
       className={`relative w-full ${className}`}
-      style={{ height: state.ready ? state.height : undefined }}
+      style={{ height: s.ready ? s.height : undefined }}
     >
       <div
         ref={innerRef}
+        data-compact={s.compact ? "true" : undefined}
         style={{
-          width: designWidth,
-          transform: `translateX(${state.left}px) scale(${state.scale})`,
+          width: s.width,
+          transform: `translateX(${s.left}px) scale(${s.scale})`,
           transformOrigin: "top left",
-          visibility: state.ready ? "visible" : "hidden",
+          visibility: s.ready ? "visible" : "hidden",
         }}
       >
         {children}

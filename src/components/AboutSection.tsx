@@ -10,7 +10,7 @@ import {
   FileCode2,
 } from "lucide-react";
 import {
-  motion,
+  m as motion,
   animate,
   useInView,
   useReducedMotion,
