@@ -93,7 +93,7 @@ const CODE: Tok[][] = [
   [
     ["  experience", "n"],
     [": ", "p"],
-    ['"4+ years"', "s"],
+    ['"6+ years"', "s"],
     [",", "p"],
   ],
   [

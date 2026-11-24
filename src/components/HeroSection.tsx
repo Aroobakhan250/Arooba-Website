@@ -75,7 +75,7 @@ const LEFT_SLIDES = [
         <InfoRow
           icon={<Briefcase className="h-4 w-4" />}
           label="Experience"
-          value="4+ years with clients worldwide"
+          value="6+ years with clients worldwide"
         />
       </div>
     ),

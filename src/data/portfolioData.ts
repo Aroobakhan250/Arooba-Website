@@ -53,12 +53,12 @@ export const PERSONAL_INFO = {
   subtext:
     "I'm Arooba Alam Khan. I architect and deliver complete digital solutions for businesses, startups, and clients worldwide — from interactive animated websites, AI chatbots, and SaaS platforms to e-commerce, custom dashboards, and automated systems.",
   about:
-    "Hi, I am Arooba Alam Khan, a Computer Engineer & Full-Stack Developer with 4+ years of real-world development experience. I develop comprehensive end-to-end applications: intuitive high-converting frontend interfaces, robust backend logic with secure APIs, scalable databases, and automated AI/scripting integrations.",
+    "Hi, I am Arooba Alam Khan, a Computer Engineer & Full-Stack Developer with 6+ years of real-world development experience. I develop comprehensive end-to-end applications: intuitive high-converting frontend interfaces, robust backend logic with secure APIs, scalable databases, and automated AI/scripting integrations.",
   education:
     "BS Computer Engineering, Sir Syed University of Engineering & Technology",
   resumeUrl: "/resume.pdf",
   stats: [
-    { label: "Years Experience", value: "4+" },
+    { label: "Years Experience", value: "6+" },
     { label: "Client Solutions Delivered", value: "25+" },
     { label: "Client Satisfaction", value: "100%" },
   ],
