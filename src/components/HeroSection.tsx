@@ -25,11 +25,10 @@ import ScaleToFit from "@/components/ScaleToFit";
 /* ─────────────────────────────────────────────────────────────
    SHARED TEXT STYLES (light theme)
 ───────────────────────────────────────────────────────────── */
-const TEAL = "#4A90A4";
 
 const SlideTitle = ({ children, right }: { children: React.ReactNode; right?: boolean }) => (
   <h3
-    className={`font-display text-lg compact:text-[15px] font-bold tracking-tight text-[#1F3A48] ${right ? "text-right" : ""}`}
+    className={`font-display text-lg compact:text-[15px] font-bold tracking-tight text-white ${right ? "text-right" : ""}`}
   >
     {children}
   </h3>
@@ -44,11 +43,11 @@ const InfoRow = ({
   label: string;
   value: string;
 }) => (
-  <div className="flex items-center gap-3 compact:gap-2 rounded-xl border border-[#4A90A4]/20 bg-white/70 p-3 compact:p-2">
-    <div className="rounded-lg bg-[#4A90A4]/12 p-2 compact:p-1.5 text-[#357A8A]">{icon}</div>
+  <div className="flex items-center gap-3 compact:gap-2 rounded-xl border border-white/10 bg-white/[0.06] p-3 compact:p-2">
+    <div className="rounded-lg bg-cyan-400/15 p-2 compact:p-1.5 text-cyan-300">{icon}</div>
     <div className="min-w-0">
-      <p className="text-[11px] compact:hidden font-medium text-[#4A6B7A]">{label}</p>
-      <p className="text-[13px] compact:text-[12.5px] font-semibold leading-snug text-[#1F3A48]">{value}</p>
+      <p className="text-[11px] compact:hidden font-medium text-slate-300">{label}</p>
+      <p className="text-[13px] compact:text-[12.5px] font-semibold leading-snug text-white">{value}</p>
     </div>
   </div>
 );
@@ -64,7 +63,7 @@ const LEFT_SLIDES = [
     content: (
       <div className="flex flex-col gap-3.5 compact:gap-2.5">
         <SlideTitle>Idea to production</SlideTitle>
-        <p className="text-[13px] leading-relaxed text-[#4A6B7A] compact:hidden">
+        <p className="text-[13px] leading-relaxed text-slate-300 compact:hidden">
           Interface, backend, database and AI integration, handled by a single
           accountable developer.
         </p>
@@ -116,23 +115,23 @@ const LEFT_SLIDES = [
               href={s.href}
               target={s.href.startsWith("mailto:") ? undefined : "_blank"}
               rel="noopener noreferrer"
-              className="flex flex-col items-center gap-1.5 compact:gap-1 rounded-xl border border-[#4A90A4]/20 bg-white/70 p-3 compact:p-2 text-[#357A8A] transition-all duration-200 hover:-translate-y-0.5 hover:border-[#4A90A4]/50 hover:bg-white hover:shadow-md"
+              className="flex flex-col items-center gap-1.5 compact:gap-1 rounded-xl border border-white/10 bg-white/[0.06] p-3 compact:p-2 text-cyan-300 transition-all duration-200 hover:-translate-y-0.5 hover:border-cyan-300/60 hover:bg-white/10 hover:shadow-md hover:shadow-cyan-400/10"
             >
               {s.icon}
-              <span className="text-[11px] compact:text-[11.5px] font-semibold text-[#1F3A48]">{s.label}</span>
+              <span className="text-[11px] compact:text-[11.5px] font-semibold text-white">{s.label}</span>
             </a>
           ))}
         </div>
 
-        <div className="flex items-center gap-3 compact:gap-2 rounded-xl border border-[#4A90A4]/20 bg-white/70 p-3 compact:p-2">
+        <div className="flex items-center gap-3 compact:gap-2 rounded-xl border border-white/10 bg-white/[0.06] p-3 compact:p-2">
           <div className="flex gap-0.5 compact:hidden" aria-hidden>
             {[...Array(5)].map((_, i) => (
               <Star key={i} className="h-3.5 w-3.5 fill-amber-400 text-amber-400" />
             ))}
           </div>
-          <div className="border-l compact:border-l-0 border-[#4A90A4]/20 pl-3 compact:pl-0">
-            <p className="text-[13px] compact:text-[12.5px] font-bold text-[#1F3A48]"><Star className="hidden compact:inline h-3.5 w-3.5 mr-1 -mt-0.5 fill-amber-400 text-amber-400" />5.0 <span className="compact:hidden">out of 5</span></p>
-            <p className="text-[11px] compact:hidden text-[#4A6B7A]">Average client rating</p>
+          <div className="border-l compact:border-l-0 border-white/15 pl-3 compact:pl-0">
+            <p className="text-[13px] compact:text-[12.5px] font-bold text-white"><Star className="hidden compact:inline h-3.5 w-3.5 mr-1 -mt-0.5 fill-amber-400 text-amber-400" />5.0 <span className="compact:hidden">out of 5</span></p>
+            <p className="text-[11px] compact:hidden text-slate-300">Average client rating</p>
           </div>
         </div>
       </div>
@@ -149,12 +148,12 @@ const LEFT_SLIDES = [
           {PERSONAL_INFO.stats.map((s) => (
             <div
               key={s.label}
-              className="flex flex-col compact:flex-row items-center justify-center compact:justify-between rounded-xl border border-[#4A90A4]/20 bg-white/70 px-2 py-3 compact:px-3 compact:py-1.5 text-center"
+              className="flex flex-col compact:flex-row items-center justify-center compact:justify-between rounded-xl border border-white/10 bg-white/[0.06] px-2 py-3 compact:px-3 compact:py-1.5 text-center"
             >
-              <span className="font-display text-2xl compact:text-xl font-extrabold text-[#357A8A]">
+              <span className="font-display text-2xl compact:text-xl font-extrabold text-cyan-300">
                 {s.value}
               </span>
-              <span className="mt-1 compact:mt-0 text-[10.5px] compact:text-[11px] compact:text-right font-medium leading-tight text-[#4A6B7A]">
+              <span className="mt-1 compact:mt-0 text-[10.5px] compact:text-[11px] compact:text-right font-medium leading-tight text-slate-300">
                 {s.label}
               </span>
             </div>
@@ -185,22 +184,22 @@ const RIGHT_SLIDES = [
         <a
           href="#contact"
           aria-label="Start a project"
-          className="group relative flex compact:hidden h-20 w-20 items-center justify-center rounded-full border border-dashed border-[#4A90A4]/60"
+          className="group relative flex compact:hidden h-20 w-20 items-center justify-center rounded-full border border-dashed border-cyan-300/50"
         >
           <svg className="animate-spin-slow absolute inset-0 h-full w-full" viewBox="0 0 100 100" aria-hidden>
             <path id="circlePathR" d="M 50,50 m -37,0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="none" />
-            <text className="fill-[#4A6B7A] text-[9px] font-bold tracking-[0.26em]">
+            <text className="fill-cyan-200 text-[9px] font-bold tracking-[0.26em]">
               <textPath xlinkHref="#circlePathR">AVAILABLE FOR HIRE •</textPath>
             </text>
           </svg>
-          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#4A90A4] text-white shadow-lg shadow-[#4A90A4]/40 transition-transform group-hover:scale-110">
+          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-cyan-400 text-slate-900 shadow-lg shadow-cyan-400/40 transition-transform group-hover:scale-110">
             <ArrowDownRight className="h-4 w-4" />
           </span>
         </a>
 
-        <div className="w-full rounded-xl border border-[#4A90A4]/20 bg-white/70 p-4 compact:p-2.5">
-          <Quote className="mb-2 compact:mb-1 h-4 w-4 compact:h-3.5 compact:w-3.5 text-[#4A90A4]" />
-          <p className="text-[13px] compact:text-[12px] font-medium leading-relaxed text-[#1F3A48]">
+        <div className="w-full rounded-xl border border-white/10 bg-white/[0.06] p-4 compact:p-2.5">
+          <Quote className="mb-2 compact:mb-1 h-4 w-4 compact:h-3.5 compact:w-3.5 text-cyan-300" />
+          <p className="text-[13px] compact:text-[12px] font-medium leading-relaxed text-white">
             Fast web applications, AI assistants and cloud-ready systems,
             engineered with clean code that scales as your business grows.
           </p>
@@ -223,10 +222,10 @@ const RIGHT_SLIDES = [
         ].map((item) => (
           <div
             key={item.text}
-            className="flex items-center gap-3 compact:gap-1.5 rounded-xl border border-[#4A90A4]/20 bg-white/70 p-2.5 compact:p-1.5"
+            className="flex items-center gap-3 compact:gap-1.5 rounded-xl border border-white/10 bg-white/[0.06] p-2.5 compact:p-1.5"
           >
-            <span className="rounded-lg bg-[#4A90A4]/12 p-1.5 compact:hidden text-[#357A8A]">{item.icon}</span>
-            <p className="text-[12.5px] compact:text-[11.5px] font-semibold leading-snug text-[#1F3A48]">{item.text}</p>
+            <span className="rounded-lg bg-cyan-400/15 p-1.5 compact:hidden text-cyan-300">{item.icon}</span>
+            <p className="text-[12.5px] compact:text-[11.5px] font-semibold leading-snug text-white">{item.text}</p>
           </div>
         ))}
       </div>
@@ -255,10 +254,11 @@ const slideVariants = {
    GLASS CARD
 ───────────────────────────────────────────────────────────── */
 const glassStyle: React.CSSProperties = {
-  background: "linear-gradient(150deg, rgba(255,255,255,0.92) 0%, rgba(214,235,245,0.70) 100%)",
-  border: "1px solid rgba(74,144,164,0.25)",
+  // Dark navy highlight cards (same family as the Services and Skills bands)
+  background: "linear-gradient(160deg, #1d2e40 0%, #131e2b 60%, #0f1822 100%)",
+  border: "1px solid rgba(34,211,238,0.35)",
   boxShadow:
-    "0 18px 50px -12px rgba(53,122,138,0.25), 0 2px 6px rgba(31,58,72,0.06), inset 0 1px 0 rgba(255,255,255,0.95)",
+    "0 24px 54px -16px rgba(15,24,34,0.6), 0 0 30px -8px rgba(34,211,238,0.3), inset 0 1px 0 rgba(255,255,255,0.08)",
   overflow: "hidden",
 };
 
@@ -286,8 +286,8 @@ function TabBar({
           onClick={() => onSelect(i)}
           className={`flex cursor-pointer items-center gap-1.5 rounded-full px-3.5 compact:px-2.5 py-1.5 text-[11px] font-semibold transition-all duration-200 ${
             i === current
-              ? "bg-[#4A90A4] text-white shadow-md shadow-[#4A90A4]/30"
-              : "text-[#4A6B7A] hover:bg-white/70 hover:text-[#1F3A48]"
+              ? "bg-cyan-400 text-slate-900 shadow-md shadow-cyan-400/30"
+              : "text-slate-300 hover:bg-white/10 hover:text-white"
           }`}
         >
           {s.icon}
@@ -307,7 +307,7 @@ function Dots({ total, current }: { total: number; current: number }) {
           className="h-1.5 rounded-full transition-all duration-300"
           style={{
             width: i === current ? 22 : 6,
-            background: i === current ? `linear-gradient(90deg, ${TEAL}, #357A8A)` : "rgba(74,144,164,0.25)",
+            background: i === current ? "linear-gradient(90deg, #22d3ee, #2dd4bf)" : "rgba(255,255,255,0.22)",
           }}
         />
       ))}
@@ -433,9 +433,9 @@ export default function HeroSection() {
               {["One point of contact", "Production-ready code", "On-time delivery"].map((t) => (
                 <li
                   key={t}
-                  className="inline-flex items-center gap-1.5 rounded-full border border-[#4A90A4]/25 bg-white/80 px-3.5 py-1.5 text-xs font-semibold text-[#1F3A48] shadow-sm"
+                  className="keep-original inline-flex items-center gap-1.5 rounded-full border border-cyan-400/35 bg-[#16222F] px-3.5 py-1.5 text-xs font-semibold text-white shadow-md shadow-[#0f1822]/25"
                 >
-                  <ShieldCheck className="h-3.5 w-3.5 text-[#4A90A4]" />
+                  <ShieldCheck className="h-3.5 w-3.5 text-cyan-300" />
                   {t}
                 </li>
               ))}
@@ -451,7 +451,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, delay: 0.15 }}
-            className="z-20 col-span-4 rounded-[28px] compact:rounded-[18px]"
+            className="keep-original z-20 col-span-4 rounded-[28px] compact:rounded-[18px]"
             style={glassStyle}
             onMouseEnter={() => setPausedLeft(true)}
             onMouseLeave={() => setPausedLeft(false)}
@@ -523,7 +523,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, delay: 0.15 }}
-            className="z-20 col-span-4 rounded-[28px] compact:rounded-[18px]"
+            className="keep-original z-20 col-span-4 rounded-[28px] compact:rounded-[18px]"
             style={glassStyle}
             onMouseEnter={() => setPausedRight(true)}
             onMouseLeave={() => setPausedRight(false)}

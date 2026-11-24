@@ -340,14 +340,15 @@ export default function AboutSection() {
                 const Icon = STAT_STYLES[i % STAT_STYLES.length].icon;
                 return (
                   <div key={s.label} className="group glow-card [--glow-r:20px]">
-                    <div className="relative z-[1] h-full overflow-hidden rounded-[18.5px] bg-gradient-to-b from-[#EAF6FC] to-[#DCEEF8] p-4 text-center sm:p-5">
+                    <div className="relative z-[1] h-full overflow-hidden rounded-[18.5px] bg-gradient-to-b from-[#EAF6FC] to-[#DCEEF8] p-3 text-center sm:p-5">
                       <div className="card-shine" aria-hidden />
                       <span
                         className={`mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-xl text-white shadow-md transition-transform duration-500 group-hover:rotate-[10deg] group-hover:scale-110 ${STAT_STYLES[i % STAT_STYLES.length].bg}`}
                       >
                         <Icon className="h-5 w-5" />
                       </span>
-                      <p className="font-display bg-gradient-to-br from-[#1F3A48] to-[#4A90A4] bg-clip-text text-3xl font-extrabold text-transparent sm:text-4xl">
+                      {/* nowrap + smaller size on phones: the gradient text only paints inside its own box, so "100%" must fit the card */}
+                      <p className="font-display whitespace-nowrap bg-gradient-to-br from-[#1F3A48] to-[#4A90A4] bg-clip-text text-xl font-extrabold text-transparent min-[360px]:text-2xl min-[420px]:text-3xl sm:text-4xl">
                         <CountUp value={s.value} />
                       </p>
                       <p className="mt-1 text-[12px] font-medium leading-tight text-[#4A6B7A] sm:text-[13px]">
