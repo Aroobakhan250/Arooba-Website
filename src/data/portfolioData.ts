@@ -56,7 +56,6 @@ export const PERSONAL_INFO = {
     "Hi, I am Arooba Alam Khan, a Computer Engineer & Full-Stack Developer with 6+ years of real-world development experience. I develop comprehensive end-to-end applications: intuitive high-converting frontend interfaces, robust backend logic with secure APIs, scalable databases, and automated AI/scripting integrations.",
   education:
     "BS Computer Engineering, Sir Syed University of Engineering & Technology",
-  resumeUrl: "/resume.pdf",
   stats: [
     { label: "Years Experience", value: "6+" },
     { label: "Client Solutions Delivered", value: "25+" },

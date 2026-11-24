@@ -67,7 +67,6 @@ All project data, bio details, stats, social links, and testimonials are organiz
 - **Profile Picture & Project Mockups**:
   - `public/avatar.svg`: Replace with your own profile photo (e.g. `public/avatar.png` or `avatar.jpg`). Update the reference in `src/components/HeroSection.tsx`.
   - `public/projects/`: Add screenshots of your real applications (`cms-preview.svg`, `restaurant-preview.svg`, `solaria-preview.svg`, `ecommerce-preview.svg`).
-  - `public/resume.pdf`: Place your real CV/resume in `public/` as `resume.pdf`.
 
 ---
 
