@@ -2,7 +2,8 @@
 
 import React, { useState } from "react";
 import { SKILLS_DATA, type SkillItem } from "@/data/portfolioData";
-import { Code2, Database, Globe, Server, Layers } from "lucide-react";
+import { Braces, Code2, Database, Globe, Server, Layers } from "lucide-react";
+import { TECH_LOGOS } from "@/data/techLogos";
 import { m as motion, AnimatePresence } from "framer-motion";
 import ScaleToFit from "@/components/ScaleToFit";
 
@@ -62,6 +63,35 @@ const LEVEL: Record<string, number> = {
 
 const FILTERS: Filter[] = ["All", "Frontend", "Backend", "Database", "Programming"];
 
+/** White tile showing the technology's real logo in its brand colours. */
+function TechBadge({ name, tint }: { name: string; tint: string }) {
+  const logos = TECH_LOGOS[name];
+  return (
+    <span
+      className="keep-original mb-3 compact:mb-2 flex h-12 w-12 compact:h-10 compact:w-10 items-center justify-center gap-0.5 rounded-2xl border border-[#4A90A4]/15 bg-white shadow-md transition-transform duration-500 group-hover:rotate-[8deg] group-hover:scale-110"
+      role="img"
+      aria-label={`${name} logo`}
+    >
+      {logos ? (
+        logos.map((l, i) => (
+          <svg
+            key={i}
+            viewBox="0 0 24 24"
+            aria-hidden
+            className={logos.length > 1 ? "h-[18px] w-[18px] compact:h-4 compact:w-4" : "h-7 w-7 compact:h-6 compact:w-6"}
+            fill={l.color}
+          >
+            <path d={l.path} />
+          </svg>
+        ))
+      ) : (
+        // No single brand for this one (e.g. REST APIs): use a neutral glyph in the category colour.
+        <Braces className="h-6 w-6 compact:h-5 compact:w-5" style={{ color: tint }} strokeWidth={2.2} />
+      )}
+    </span>
+  );
+}
+
 function SkillCard({ skill, index }: { skill: SkillItem; index: number }) {
   const c = CAT[skill.category];
   const Icon = c.icon;
@@ -84,13 +114,7 @@ function SkillCard({ skill, index }: { skill: SkillItem; index: number }) {
       <div className="relative z-[1] flex h-full flex-col items-center overflow-hidden rounded-[18.5px] bg-gradient-to-b from-[#EAF6FC] to-[#DCEEF8] px-4 pb-4 pt-5 compact:px-2.5 compact:pb-3 compact:pt-3.5 text-center">
         <div className="card-shine" aria-hidden />
 
-        <span
-          className={`mb-3 compact:mb-2 flex h-12 w-12 compact:h-10 compact:w-10 items-center justify-center rounded-2xl bg-gradient-to-br text-white shadow-md transition-transform duration-500 group-hover:rotate-[8deg] group-hover:scale-110 ${c.grad}`}
-        >
-          <span className="font-mono text-sm font-bold tracking-wider">
-            {skill.name.slice(0, 2).toUpperCase()}
-          </span>
-        </span>
+        <TechBadge name={skill.name} tint={c.g1} />
 
         <h3 className="font-display text-[15px] compact:text-[14px] font-bold leading-tight text-[#1F3A48]">
           {skill.name}
@@ -135,9 +159,14 @@ export default function SkillsSection() {
   return (
     <section
       id="skills"
-      className="relative overflow-hidden border-y border-[#4A90A4]/15 bg-gradient-to-b from-white/60 via-[#F3FAFD]/80 to-white/60 pb-14 pt-8 md:pb-16 md:pt-10"
+      className="keep-original isolate relative overflow-hidden bg-[linear-gradient(180deg,#0A2029_0%,#0E3340_50%,#0A2029_100%)] pb-16 pt-14 md:pb-24 md:pt-20"
     >
-      <div className="pointer-events-none absolute inset-0 -z-10 opacity-40 [background-image:radial-gradient(rgba(74,144,164,0.22)_1px,transparent_1px)] [background-size:26px_26px] [mask-image:linear-gradient(to_bottom,transparent,black_20%,black_80%,transparent)]" />
+      {/* Deep-teal highlight band: hairlines, dot grid and soft glows */}
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-teal-300/50 to-transparent" />
+      <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-teal-300/30 to-transparent" />
+      <div className="pointer-events-none absolute inset-0 -z-10 opacity-60 [background-image:radial-gradient(rgba(153,246,228,0.22)_1px,transparent_1px)] [background-size:26px_26px] [mask-image:radial-gradient(ellipse_at_center,black_35%,transparent_80%)]" />
+      <div aria-hidden className="pointer-events-none absolute -right-32 top-10 -z-10 h-[420px] w-[420px] rounded-full bg-teal-400/20 blur-[120px]" />
+      <div aria-hidden className="pointer-events-none absolute -left-32 bottom-10 -z-10 h-[420px] w-[420px] rounded-full bg-sky-500/20 blur-[120px]" />
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
@@ -148,14 +177,15 @@ export default function SkillsSection() {
           transition={{ duration: 0.6 }}
           className="mx-auto mb-8 max-w-2xl text-center"
         >
-          <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#4A90A4]/25 bg-white px-4 py-1.5 text-[13px] font-semibold text-[#357A8A] shadow-sm">
+          <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-teal-300/30 bg-teal-300/10 px-4 py-1.5 text-[13px] font-semibold text-teal-200">
             <Layers className="h-3.5 w-3.5" />
             Core competencies
           </p>
-          <h2 className="font-display text-4xl font-bold leading-[1.05] tracking-[-0.03em] text-[#1F3A48] sm:text-5xl">
-            Languages, frameworks &amp; tooling
+          <h2 className="font-display text-4xl font-bold leading-[1.05] tracking-[-0.03em] text-white sm:text-5xl">
+            Languages, frameworks &amp;{" "}
+            <span className="bg-gradient-to-r from-teal-200 to-sky-300 bg-clip-text text-transparent">tooling</span>
           </h2>
-          <p className="mt-4 text-base leading-relaxed text-[#4A6B7A] sm:text-lg">
+          <p className="mt-4 text-base leading-relaxed text-slate-300 sm:text-lg">
             A production-proven stack chosen for speed, performance and
             long-term maintainability.
           </p>
@@ -169,7 +199,7 @@ export default function SkillsSection() {
         >
           {FILTERS.map((f) => {
             const active = filter === f;
-            const dot = f === "All" ? "#1F3A48" : CAT[f].g1;
+            const dot = f === "All" ? "#99F6E4" : CAT[f].g2;
             return (
               <button
                 key={f}
@@ -178,18 +208,18 @@ export default function SkillsSection() {
                 onClick={() => setFilter(f)}
                 className={`inline-flex cursor-pointer items-center gap-2 rounded-full border px-4 py-2 text-[13px] font-semibold transition-all duration-200 ${
                   active
-                    ? "border-[#1F3A48] bg-[#1F3A48] text-white shadow-lg shadow-[#1F3A48]/20"
-                    : "border-[#4A90A4]/25 bg-white text-[#4A6B7A] hover:border-[#4A90A4]/60 hover:text-[#1F3A48]"
+                    ? "border-teal-200 bg-teal-200 text-[#0A2029] shadow-lg shadow-teal-300/20"
+                    : "border-white/15 bg-white/5 text-slate-300 hover:border-teal-200/50 hover:text-white"
                 }`}
               >
                 <span
                   className="h-2 w-2 rounded-full"
-                  style={{ background: active ? "#fff" : dot }}
+                  style={{ background: active ? "#0A2029" : dot }}
                 />
                 {f}
                 <span
                   className={`rounded-full px-1.5 py-0.5 text-[10.5px] leading-none ${
-                    active ? "bg-white/20 text-white" : "bg-[#4A90A4]/12 text-[#357A8A]"
+                    active ? "bg-[#0A2029]/15 text-[#0A2029]" : "bg-white/10 text-slate-300"
                   }`}
                 >
                   {countFor(f)}

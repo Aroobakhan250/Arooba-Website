@@ -1,0 +1,301 @@
+/* ══════════════════════════════════════════════════════════════
+   Services bento tiles
+   Each tile sets --accent as "r, g, b" so border, glow, icon and
+   chips all follow the tile's own colour.
+   ══════════════════════════════════════════════════════════════ */
+.svc-tile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-radius: 1rem;
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    rgba(var(--accent), 0.6),
+    rgba(255, 255, 255, 0.07) 38%,
+    rgba(var(--accent), 0.3)
+  );
+  box-shadow: 0 10px 30px -18px rgba(var(--accent), 0.5);
+  transition: translate 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s;
+}
+.svc-tile:hover {
+  translate: 0 -5px;
+  box-shadow: 0 22px 46px -16px rgba(var(--accent), 0.6);
+}
+.svc-inner {
+  position: relative;
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  border-radius: calc(1rem - 1px);
+  background: linear-gradient(160deg, #1d2e40 0%, #131e2b 60%, #0f1822 100%);
+}
+/* cursor-following spotlight */
+.svc-inner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s;
+  background: radial-gradient(
+    280px circle at var(--mx, 50%) var(--my, 0%),
+    rgba(var(--accent), 0.22),
+    transparent 65%
+  );
+}
+.svc-tile:hover .svc-inner::before {
+  opacity: 1;
+}
+/* ambient accent glow in the corner */
+.svc-inner::after {
+  content: "";
+  position: absolute;
+  top: -3rem;
+  right: -2rem;
+  width: 9rem;
+  height: 9rem;
+  border-radius: 9999px;
+  background: rgba(var(--accent), 0.16);
+  filter: blur(42px);
+  pointer-events: none;
+}
+.svc-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 0.75rem;
+  color: rgb(var(--accent));
+  background: linear-gradient(135deg, rgba(var(--accent), 0.24), rgba(var(--accent), 0.06));
+  border: 1px solid rgba(var(--accent), 0.4);
+  box-shadow: 0 0 18px -4px rgba(var(--accent), 0.55);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.svc-tile:hover .svc-icon {
+  transform: rotate(-6deg) scale(1.1);
+}
+.svc-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-weight: 600;
+  color: rgb(var(--accent));
+  transition: filter 0.2s;
+}
+.svc-cta:hover {
+  filter: brightness(1.25);
+}
+.svc-cta svg {
+  transition: translate 0.25s;
+}
+.svc-cta:hover svg {
+  translate: 3px 0;
+}
+.svc-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 10.5px;
+  font-weight: 600;
+  line-height: 1;
+  padding: 0.28rem 0.55rem;
+  border-radius: 9999px;
+  color: rgb(var(--accent));
+  background: rgba(var(--accent), 0.1);
+  border: 1px solid rgba(var(--accent), 0.28);
+}
+.svc-accent {
+  color: rgb(var(--accent));
+}
+.svc-strip {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.6rem;
+  background: rgba(8, 14, 21, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+/* ── chat conversation (10s loop) ── */
+@keyframes svc-b1 {
+  0%, 2% { opacity: 0; transform: translateY(8px) scale(0.96); }
+  7%, 90% { opacity: 1; transform: none; }
+  96%, 100% { opacity: 0; transform: translateY(-4px); }
+}
+@keyframes svc-b2 {
+  0%, 28% { opacity: 0; transform: translateY(8px) scale(0.96); }
+  33%, 90% { opacity: 1; transform: none; }
+  96%, 100% { opacity: 0; transform: translateY(-4px); }
+}
+@keyframes svc-b3 {
+  0%, 56% { opacity: 0; transform: translateY(8px) scale(0.96); }
+  61%, 90% { opacity: 1; transform: none; }
+  96%, 100% { opacity: 0; transform: translateY(-4px); }
+}
+@keyframes svc-t1 {
+  0%, 10% { opacity: 0; }
+  14%, 26% { opacity: 1; }
+  30%, 100% { opacity: 0; }
+}
+@keyframes svc-t2 {
+  0%, 40% { opacity: 0; }
+  44%, 54% { opacity: 1; }
+  58%, 100% { opacity: 0; }
+}
+.svc-b1 { animation: svc-b1 10s ease-out infinite; }
+.svc-b2 { animation: svc-b2 10s ease-out infinite; }
+.svc-b3 { animation: svc-b3 10s ease-out infinite; }
+.svc-t1 { animation: svc-t1 10s linear infinite; }
+.svc-t2 { animation: svc-t2 10s linear infinite; }
+@keyframes svc-dot {
+  0%, 60%, 100% { translate: 0 0; opacity: 0.4; }
+  30% { translate: 0 -3px; opacity: 1; }
+}
+.svc-dot { animation: svc-dot 1s ease-in-out infinite; }
+
+/* ── dashboard bars + trend line ── */
+@keyframes svc-bar {
+  0% { transform: scaleY(0.12); }
+  35%, 80% { transform: scaleY(1); }
+  100% { transform: scaleY(0.12); }
+}
+.svc-bar {
+  transform-origin: bottom;
+  animation: svc-bar 4s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+}
+@keyframes svc-draw {
+  0%, 20% { stroke-dashoffset: 1; }
+  55%, 85% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: 1; }
+}
+.svc-draw {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: svc-draw 4s ease-in-out infinite;
+}
+@keyframes svc-live {
+  0%, 100% { opacity: 1; scale: 1; }
+  50% { opacity: 0.35; scale: 0.7; }
+}
+.svc-live { animation: svc-live 1.4s ease-in-out infinite; }
+
+/* ── websites: mini browser ── */
+@keyframes svc-load {
+  0% { transform: scaleX(0); }
+  55%, 100% { transform: scaleX(1); }
+}
+.svc-load {
+  transform-origin: left;
+  animation: svc-load 3.6s ease-out infinite;
+}
+@keyframes svc-shimmer {
+  to { background-position: -200% 0; }
+}
+.svc-shimmer {
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.07) 25%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.07) 75%);
+  background-size: 200% 100%;
+  animation: svc-shimmer 2.2s linear infinite;
+}
+@keyframes svc-cursor {
+  0%, 100% { translate: 0 0; }
+  35% { translate: -26px 8px; }
+  65% { translate: -10px -4px; }
+}
+.svc-cursor { animation: svc-cursor 4.5s ease-in-out infinite; }
+
+/* ── animated sites: orbits ── */
+@keyframes svc-orbit {
+  to { rotate: 360deg; }
+}
+.svc-orbit { animation: svc-orbit 6s linear infinite; }
+.svc-orbit-rev { animation: svc-orbit 9s linear infinite reverse; }
+@keyframes svc-float {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -7px; }
+}
+.svc-float { animation: svc-float 3s ease-in-out infinite; }
+@keyframes svc-twinkle {
+  0%, 100% { opacity: 0.2; scale: 0.6; }
+  50% { opacity: 1; scale: 1.15; }
+}
+.svc-twinkle { animation: svc-twinkle 2.4s ease-in-out infinite; }
+
+/* ── custom software: terminal ── */
+@keyframes svc-type {
+  0% { width: 0; }
+  45%, 88% { width: 19ch; }
+  100% { width: 0; }
+}
+.svc-type {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  vertical-align: bottom;
+  width: 19ch;
+  animation: svc-type 6s steps(19, end) infinite;
+}
+@keyframes svc-blink {
+  50% { opacity: 0; }
+}
+.svc-blink { animation: svc-blink 0.9s steps(1) infinite; }
+@keyframes svc-late {
+  0%, 50% { opacity: 0; translate: 0 4px; }
+  58%, 88% { opacity: 1; translate: 0 0; }
+  96%, 100% { opacity: 0; }
+}
+.svc-late { animation: svc-late 6s ease-out infinite; }
+
+/* ── saas: stacked layers ── */
+@keyframes svc-layer {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -6px; }
+}
+.svc-layer { animation: svc-layer 2.8s ease-in-out infinite; }
+
+/* ── e-commerce: items drop into the cart ── */
+@keyframes svc-drop {
+  0% { translate: 0 -24px; opacity: 0; }
+  25% { opacity: 1; }
+  60%, 100% { translate: 0 8px; opacity: 0; }
+}
+.svc-drop { animation: svc-drop 2.4s ease-in infinite; }
+@keyframes svc-pulse {
+  0%, 100% { scale: 1; }
+  50% { scale: 1.3; }
+}
+.svc-pulse { animation: svc-pulse 2.4s ease-in-out infinite; }
+
+/* ── game: A* path lighting up ── */
+@keyframes svc-path {
+  0%, 100% { background: #131d27; box-shadow: none; }
+  10%, 60% { background: #14d4c0; box-shadow: 0 0 10px rgba(20, 212, 192, 0.65); }
+}
+.svc-path { animation: svc-path 4.8s ease-in-out infinite; }
+
+/* ── consultation banner button sheen ── */
+.svc-btn {
+  position: relative;
+  overflow: hidden;
+}
+.svc-btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 35%, rgba(255, 255, 255, 0.45) 50%, transparent 65%);
+  translate: -120% 0;
+  animation: svc-sheen 3.2s ease-in-out infinite;
+}
+@keyframes svc-sheen {
+  0%, 55% { translate: -120% 0; }
+  100% { translate: 120% 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .svc-tile,
+  .svc-tile:hover { translate: none; }
+  .svc-b1, .svc-b2, .svc-b3, .svc-bar, .svc-draw, .svc-live, .svc-load, .svc-shimmer,
+  .svc-cursor, .svc-orbit, .svc-orbit-rev, .svc-float, .svc-twinkle, .svc-type, .svc-blink,
+  .svc-late, .svc-layer, .svc-drop, .svc-pulse, .svc-path, .svc-btn::after { animation: none; }
+  .svc-draw { stroke-dashoffset: 0; }
+  .svc-t1, .svc-t2, .svc-dot { display: none; }
+}

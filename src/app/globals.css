@@ -220,6 +220,10 @@ html[data-theme="dark"] video,
 html[data-theme="dark"] .keep-original {
   filter: invert(1) hue-rotate(180deg);
 }
+/* a keep-original inside another one must not flip a second time */
+html[data-theme="dark"] .keep-original .keep-original {
+  filter: none;
+}
 html[data-theme="dark"] .keep-original img,
 html[data-theme="dark"] .keep-original video {
   filter: none;

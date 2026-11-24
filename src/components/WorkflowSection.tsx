@@ -71,7 +71,7 @@ export default function WorkflowSection() {
   return (
     <section
       id="workflow"
-      className="relative overflow-hidden pb-14 pt-8 md:pb-16 md:pt-10"
+      className="isolate relative overflow-hidden border-y border-[#4A90A4]/20 bg-white pb-14 pt-8 md:pb-16 md:pt-10"
     >
       <div className="pointer-events-none absolute -left-28 top-16 -z-10 h-[380px] w-[380px] rounded-full bg-[radial-gradient(closest-side,rgba(184,216,232,0.55),transparent)]" />
       <div className="pointer-events-none absolute -right-24 bottom-0 -z-10 h-[360px] w-[360px] rounded-full bg-[radial-gradient(closest-side,rgba(74,144,164,0.16),transparent)]" />
@@ -117,7 +117,7 @@ export default function WorkflowSection() {
                   whileInView={{ scale: 1, opacity: 1 }}
                   viewport={{ once: true, margin: "-60px" }}
                   transition={{ delay: 0.25 + i * 0.3, type: "spring", stiffness: 260, damping: 18 }}
-                  className={`relative flex h-11 w-11 compact:h-8 compact:w-8 items-center justify-center rounded-full bg-gradient-to-br font-display text-sm compact:text-[11px] font-extrabold text-white shadow-lg ring-4 ring-[#F5FBFF] ${STEP_STYLES[i % 5].grad}`}
+                  className={`relative flex h-11 w-11 compact:h-8 compact:w-8 items-center justify-center rounded-full bg-gradient-to-br font-display text-sm compact:text-[11px] font-extrabold text-white shadow-lg ring-4 ring-white ${STEP_STYLES[i % 5].grad}`}
                 >
                   {step.number}
                 </motion.span>

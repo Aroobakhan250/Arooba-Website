@@ -228,7 +228,7 @@ export default function ProjectsSection() {
   return (
     <section
       id="projects"
-      className="relative overflow-hidden border-y border-[#4A90A4]/15 bg-gradient-to-b from-white/70 via-[#F3FAFD]/80 to-white/70 pb-14 pt-8 md:pb-16 md:pt-10"
+      className="isolate relative overflow-hidden border-y border-[#4A90A4]/20 bg-white pb-14 pt-8 md:pb-16 md:pt-10"
     >
       <div className="pointer-events-none absolute inset-0 -z-10 opacity-40 [background-image:radial-gradient(rgba(74,144,164,0.22)_1px,transparent_1px)] [background-size:26px_26px] [mask-image:linear-gradient(to_bottom,transparent,black_20%,black_80%,transparent)]" />
 
