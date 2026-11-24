@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import Image from "next/image";
 import { m as motion, AnimatePresence } from "framer-motion";
 import {
   ArrowRight,
@@ -21,6 +20,7 @@ import {
 import { LinkedinIcon } from "@/components/BrandIcons";
 import { PERSONAL_INFO } from "@/data/portfolioData";
 import ScaleToFit from "@/components/ScaleToFit";
+import HeroRobot from "@/components/HeroRobot";
 
 /* ─────────────────────────────────────────────────────────────
    SHARED TEXT STYLES (light theme)
@@ -483,22 +483,9 @@ export default function HeroSection() {
             transition={{ duration: 0.8, delay: 0.1 }}
             className="relative col-span-4 flex flex-col items-center justify-center"
           >
-            <div className="relative aspect-[4/5] w-full max-w-[360px] rounded-[30px] border border-[#4A90A4]/30 bg-gradient-to-b from-[#4A90A4]/45 via-white/30 to-[#7BB8C8]/55 p-[3px] shadow-[0_34px_70px_-18px_rgba(53,122,138,0.45)]">
-              <div className="relative h-full w-full overflow-hidden rounded-[27px] border border-[#4A90A4]/15 bg-[#E0F0F8]">
-                <Image
-                  src="/arooba-hero.png"
-                  alt="Arooba Alam Khan, full-stack developer"
-                  fill
-                  priority
-                  className="object-cover object-top brightness-[1.02] contrast-[1.03]"
-                  sizes="(max-width: 768px) 300px, 360px"
-                />
-                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#E0F0F8] via-[#E0F0F8]/30 to-transparent" />
-                <div className="absolute left-3.5 top-3.5 compact:left-1.5 compact:top-1.5 flex items-center gap-2 compact:gap-1 rounded-full border border-[#4A90A4]/20 bg-white/90 px-3 py-1.5 compact:px-1.5 compact:py-0.5 shadow-md">
-                  <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-500" />
-                  <span className="text-[11px] compact:text-[9.5px] font-semibold text-[#1F3A48]">Open for projects</span>
-                </div>
-              </div>
+            <div className="relative aspect-[4/5] w-full max-w-[360px] rounded-[30px] border border-cyan-400/40 bg-gradient-to-b from-cyan-400/55 via-[#1d2e40] to-teal-400/45 p-[3px] shadow-[0_34px_70px_-18px_rgba(15,24,34,0.6),0_0_44px_-10px_rgba(34,211,238,0.35)]">
+              {/* Centre visual: animated robot with orbiting tools (replaces the portrait photo) */}
+              <HeroRobot />
 
               <div className="absolute -bottom-5 compact:-bottom-3 left-1/2 z-30 flex -translate-x-1/2 items-center whitespace-nowrap rounded-full border border-[#4A90A4]/20 bg-white p-1.5 compact:p-0.5 shadow-2xl shadow-[#4A90A4]/25">
                 <a

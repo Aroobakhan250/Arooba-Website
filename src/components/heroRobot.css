@@ -1,0 +1,12 @@
+/* Hero robot: orbiting tools and logos. */
+
+@keyframes rb-spin {
+  to { rotate: 360deg; }
+}
+/* An orbit ring and the tiles on it share --dur. Each tile counter-rotates so it stays upright. */
+.rb-fwd { animation: rb-spin var(--dur, 20s) linear infinite; }
+.rb-back { animation: rb-spin var(--dur, 20s) linear infinite reverse; }
+
+@media (prefers-reduced-motion: reduce) {
+  .rb-fwd, .rb-back { animation: none; }
+}
